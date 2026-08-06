@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Estratégico: Como Dominar o Greenhouse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0B0F1A;--surface:#141929;--surface-2:#1C2236;--surface-3:#242A3D;--border:#2A3150;--text:#E2E6F0;--text-muted:#8B92A8;--accent:#24B47E;--accent-light:#6EE7B7;--green:#00D68F;--green-bg:rgba(0,214,143,.08);--red:#FF6B6B;--red-bg:rgba(255,107,107,.08);--yellow:#FECA57;--yellow-bg:rgba(254,202,87,.08);--blue:#54A0FF;--blue-bg:rgba(84,160,255,.08);--gh:#24B47E;--gh-bg:rgba(36,180,126,.1)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .hero{padding:80px 0 60px;border-bottom:1px solid var(--border);text-align:center}
+  .hero-badge{display:inline-block;background:var(--gh);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:4px;margin-bottom:24px}
+  .hero h1{font-size:clamp(32px,5vw,48px);font-weight:900;line-height:1.15;margin-bottom:16px;letter-spacing:-1px}
+  .hero h1 span{color:var(--accent-light)}
+  .hero p{font-size:17px;color:var(--text-muted);max-width:620px;margin:0 auto}
+  .stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;margin:40px 0;overflow:hidden}
+  .stat{background:var(--surface);padding:24px;text-align:center}
+  .stat-number{font-size:28px;font-weight:800;color:var(--accent-light);font-family:'JetBrains Mono',monospace}
+  .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+  .section{padding:60px 0;border-bottom:1px solid var(--border)}
+  .section-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--gh);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+  .section h2{font-size:clamp(24px,3.5vw,32px);font-weight:800;margin-bottom:24px;letter-spacing:-.5px}
+  .section h3{font-size:18px;font-weight:700;margin:32px 0 12px;color:var(--text)}
+  .section p{color:var(--text-muted);margin-bottom:16px;font-size:15px}
+  .table-wrap{overflow-x:auto;margin:20px 0;border:1px solid var(--border);border-radius:8px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);color:var(--text);font-weight:700;text-align:left;padding:14px 16px;font-size:12px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);white-space:nowrap}
+  tbody td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(36,180,126,.04)}
+  td strong{color:var(--text);font-weight:600}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px}
+  .card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+  .card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:13px;color:var(--text-muted);margin:0;line-height:1.6}
+  .alert{border-radius:8px;padding:20px 24px;margin:24px 0;border-left:3px solid;font-size:14px;line-height:1.7}
+  .alert-danger{background:var(--red-bg);border-color:var(--red)}.alert-danger .alert-title{color:var(--red)}
+  .alert-success{background:var(--green-bg);border-color:var(--green)}.alert-success .alert-title{color:var(--green)}
+  .alert-warning{background:var(--yellow-bg);border-color:var(--yellow)}.alert-warning .alert-title{color:var(--yellow)}
+  .alert-info{background:var(--blue-bg);border-color:var(--blue)}.alert-info .alert-title{color:var(--blue)}
+  .alert-gh{background:var(--gh-bg);border-color:var(--gh)}.alert-gh .alert-title{color:var(--accent-light)}
+  .alert-title{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .alert p{color:var(--text);margin:0}
+  .step{display:flex;gap:20px;margin:20px 0;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .step-num{flex-shrink:0;width:36px;height:36px;background:var(--gh);color:#fff;font-weight:800;font-size:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
+  .step-content h4{font-size:15px;font-weight:700;margin-bottom:6px}
+  .step-content p{font-size:13px;color:var(--text-muted);margin:0}
+  .step-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:3px;margin-top:8px}
+  .tag-critical{background:var(--red-bg);color:var(--red)}
+  .tag-important{background:var(--yellow-bg);color:var(--yellow)}
+  .tag-tip{background:var(--green-bg);color:var(--green)}
+  .hack{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px;margin:16px 0}
+  .hack-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .hack-badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--green);background:var(--green-bg);padding:4px 10px;border-radius:4px;white-space:nowrap}
+  .hack h4{font-size:16px;font-weight:700}
+  .hack p{font-size:14px;color:var(--text-muted);margin-bottom:12px}
+  .hack-action{background:var(--surface-3);border-radius:6px;padding:14px 18px;font-size:13px;color:var(--text);border-left:2px solid var(--gh)}
+  .hack-action strong{color:var(--accent-light)}
+  .flow{display:flex;flex-direction:column;gap:4px;margin:24px 0}
+  .flow-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .flow-arrow{text-align:center;color:var(--text-muted);font-size:18px;padding:0 0 0 18px}
+  .flow-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gh);font-weight:600;flex-shrink:0;width:80px}
+  .flow-text{font-size:14px;color:var(--text)}.flow-text small{display:block;color:var(--text-muted);font-size:12px;margin-top:2px}
+  .toc{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px 32px;margin:40px 0}
+  .toc h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:16px}
+  .toc ol{list-style:none;counter-reset:toc-counter}
+  .toc li{counter-increment:toc-counter;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .toc li:last-child{border-bottom:none}
+  .toc li::before{content:counter(toc-counter,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gh);margin-right:12px;font-size:12px}
+  .toc a{color:var(--text);text-decoration:none}.toc a:hover{color:var(--accent-light)}
+  .checklist{list-style:none;margin:20px 0}
+  .checklist li{padding:12px 16px 12px 44px;position:relative;font-size:14px;color:var(--text-muted);border-bottom:1px solid var(--border)}
+  .checklist li:last-child{border-bottom:none}
+  .checklist li::before{content:'';position:absolute;left:16px;top:14px;width:16px;height:16px;border:2px solid var(--border);border-radius:3px}
+  .checklist li strong{color:var(--text)}
+  .myth-grid{display:grid;gap:12px;margin:20px 0}
+  .myth-item{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden}
+  .myth-side,.fact-side{padding:18px 20px;font-size:13px}
+  .myth-side{background:var(--red-bg)}.myth-side::before{content:'✗ MITO';display:block;font-size:10px;font-weight:800;color:var(--red);letter-spacing:1px;margin-bottom:6px}
+  .fact-side{background:var(--green-bg)}.fact-side::before{content:'✓ REALIDADE';display:block;font-size:10px;font-weight:800;color:var(--green);letter-spacing:1px;margin-bottom:6px}
+  .profile-mock{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+  .profile-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px}
+  .profile-box h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+  .profile-field{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
+  .profile-field:last-child{border-bottom:none}
+  .field-label{color:var(--text-muted)}.field-value{color:var(--text);font-weight:500;text-align:right}
+  .field-empty{color:var(--red);font-style:italic}
+  .ai-summary{background:var(--surface-3);border-radius:6px;padding:12px;margin-top:12px;font-size:12px;color:var(--text-muted);line-height:1.6;font-style:italic}
+  .footer{padding:40px 0;text-align:center;color:var(--text-muted);font-size:12px}.footer p{margin-bottom:4px}
+  @media(max-width:640px){.myth-item,.profile-mock{grid-template-columns:1fr}.step{flex-direction:column;gap:12px}.stats-bar{grid-template-columns:1fr 1fr}.hero{padding:48px 0 40px}.section{padding:40px 0}}
+  @media print{body{background:#fff;color:#111}.alert,.card,.hack,.step{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge">Inteligência de Processo Seletivo</div>
+    <h1>Guia Estratégico:<br><span>Como Dominar o Greenhouse</span></h1>
+    <p>O ATS dominante em tech global, startups VC-backed e scale-ups internacionais. Onde o recrutador lê seu PDF real — e a IA gera um resumo que decide se ele abre o arquivo.</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-number">8.500+</div><div class="stat-label">Empresas clientes</div></div>
+    <div class="stat"><div class="stat-number">150M+</div><div class="stat-label">Candidaturas em 2024</div></div>
+    <div class="stat"><div class="stat-number">200+</div><div class="stat-label">Países</div></div>
+    <div class="stat"><div class="stat-number">~18%</div><div class="stat-label">Market share mid-market US</div></div>
+  </div>
+
+  <div class="toc">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#oque">O que é o Greenhouse (e quem usa)</a></li>
+      <li><a href="#diferenca">A diferença fundamental: o recrutador lê seu PDF</a></li>
+      <li><a href="#candidato">Como funciona para o Candidato</a></li>
+      <li><a href="#recrutador">Como funciona para o Recrutador</a></li>
+      <li><a href="#parser">Como o Parser lê seu currículo: seção por seção</a></li>
+      <li><a href="#ia">Greenhouse AI: o que mudou em 2025/2026</a></li>
+      <li><a href="#profile">O que o recrutador vê: perfil parsed vs. PDF</a></li>
+      <li><a href="#hacks">Hacks e estratégias que funcionam</a></li>
+      <li><a href="#quebra">O que ainda quebra no Greenhouse</a></li>
+      <li><a href="#mitos">Mitos vs. Realidade</a></li>
+      <li><a href="#comparativo">Comparativo: Greenhouse vs. Gupy vs. InHire vs. LinkedIn</a></li>
+      <li><a href="#checklist">Checklist pré-candidatura</a></li>
+    </ol>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section" id="oque">
+    <div class="section-tag">Seção 01</div>
+    <h2>O que é o Greenhouse (e quem usa)</h2>
+    <p>O Greenhouse é um ATS americano, propriedade independente (não foi adquirido por SAP, Workday ou iCIMS), que domina o mercado de empresas de tecnologia de médio porte globalmente. Com mais de 8.500 clientes e 150 milhões de candidaturas processadas em 2024, é o ATS escolhido pela maioria das empresas VC-backed, fintechs, e startups Series B+ no mundo.</p>
+
+    <h3>Empresas que usam Greenhouse (exemplos públicos)</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon" style="background:var(--gh-bg)">🏢</div><h4>Consumer Tech</h4><p>Airbnb, DoorDash, Pinterest, Reddit, Instacart, Wayfair, StubHub, Notion</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--gh-bg)">💳</div><h4>Fintech & SaaS</h4><p>Stripe, HubSpot, Zapier, Gusto, Zendesk, Figma</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--gh-bg)">🌎</div><h4>Entretenimento & Outros</h4><p>Warner Bros Discovery, NBA, e milhares de startups Series A-C globais</p></div>
+    </div>
+
+    <div class="alert alert-gh">
+      <div class="alert-title">🔎 Como identificar se uma empresa usa Greenhouse</div>
+      <p>Olhe a URL do formulário de candidatura: se redireciona para um subdomínio <strong>greenhouse.io</strong> (ex: boards.greenhouse.io/empresa), ou se o formulário diz "Submit application" com design limpo e minimalista, é Greenhouse. Também pode verificar no rodapé da página de carreiras da empresa.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 -->
+  <div class="section" id="diferenca">
+    <div class="section-tag">Seção 02</div>
+    <h2>A diferença fundamental: o recrutador lê seu PDF</h2>
+    <p>Essa é a diferença mais importante entre o Greenhouse e todos os outros ATSs que você já viu (Gupy, InHire, Workday, Taleo):</p>
+
+    <div class="alert alert-success">
+      <div class="alert-title">✓ No Greenhouse, o recrutador vê seu arquivo real</div>
+      <p>Na Gupy e no Workday, o recrutador vê campos parseados (preenchimento automático) — seu currículo original muitas vezes nem é aberto. No Greenhouse, o recrutador vê <strong>seu PDF real</strong> na tela, com o layout, a tipografia e o design que você mandou. Os campos parseados ficam como metadados na barra lateral. Isso significa que <strong>design visual importa mais no Greenhouse</strong> do que em qualquer outro ATS.</p>
+    </div>
+
+    <p>Mas atenção: desde setembro de 2025, a <strong>Greenhouse AI</strong> gera um resumo automático de 2-4 frases do seu currículo — e o recrutador lê esse resumo ANTES de decidir abrir seu PDF. A IA lê apenas o texto parseado, não o PDF visual. Então seu currículo precisa funcionar em duas camadas: bonito para o humano, e limpo para o parser.</p>
+  </div>
+
+  <!-- SEÇÃO 3: CANDIDATO -->
+  <div class="section" id="candidato">
+    <div class="section-tag">Seção 03</div>
+    <h2>Como funciona para o Candidato</h2>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Encontrar a vaga</h4>
+        <p>Vagas Greenhouse ficam na página de carreiras da empresa (boards.greenhouse.io/empresa) ou são publicadas em job boards integrados (LinkedIn, Indeed, etc.). Não existe portal centralizado de vagas Greenhouse.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Preencher o formulário de aplicação</h4>
+        <p>O formulário Greenhouse é leve: upload de currículo (PDF, DOCX, TXT, RTF — máx 5MB), confirmação/correção de 3-5 campos auto-preenchidos (nome, e-mail, telefone, LinkedIn), e eventualmente perguntas customizadas da empresa. <strong>Sem formulário extenso de 20+ campos</strong> como Workday ou Taleo.</p>
+        <span class="step-tag tag-tip">Vantagem para o candidato</span>
+        <p style="margin-top:8px;">O formulário é rápido e não exige recadastrar toda sua experiência manualmente. Seu CV uploadado é o que importa.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Parsing automático</h4>
+        <p>O Greenhouse extrai do seu CV: contato (nome, e-mail, telefone, LinkedIn URL), histórico profissional (empresa, cargo, datas), educação, e skills. Esses dados populam sua ficha de candidato. Todo o texto é indexado para busca por keywords.</p>
+        <span class="step-tag tag-critical">Ponto crítico</span>
+        <p style="margin-top:8px;">Se o parser não extrair corretamente seus dados (por problemas de formatação), sua ficha aparece incompleta. O recrutador vê campos vazios na barra lateral e o resumo da IA fica inútil — mesmo que seu PDF esteja perfeito visualmente.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Acompanhamento</h4>
+        <p>Greenhouse tem portal do candidato com status da candidatura. Deduplicação é feita por e-mail: se você se candidata a duas vagas na mesma empresa com o mesmo e-mail, ambas ficam no mesmo perfil. Usar e-mails diferentes pode criar duplicatas problemáticas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: RECRUTADOR -->
+  <div class="section" id="recrutador">
+    <div class="section-tag">Seção 04</div>
+    <h2>Como funciona para o Recrutador</h2>
+
+    <div class="flow">
+      <div class="flow-item"><div class="flow-label">PASSO 1</div><div class="flow-text"><strong>Lê o resumo da IA</strong><small>Greenhouse AI gera 2-4 frases resumindo seu currículo. O recrutador lê isso PRIMEIRO para decidir se vale abrir o PDF. Um parse ruim = resumo inútil = perfil ignorado.</small></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><div class="flow-label">PASSO 2</div><div class="flow-text"><strong>Olha a barra lateral parseada</strong><small>Cargo atual, empresa, skills detectadas. Se esses campos estão vazios ou errados, o recrutador assume baixo esforço e pula para o próximo.</small></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><div class="flow-label">PASSO 3</div><div class="flow-text"><strong>Abre o PDF (só para os top candidatos)</strong><small>O recrutador vê seu arquivo real inline no perfil. Foca no cargo mais recente e no primeiro bullet point abaixo dele. Design visual importa aqui.</small></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><div class="flow-label">PASSO 4</div><div class="flow-text"><strong>Filtra por keywords (vagas de alto volume)</strong><small>Para vagas com centenas de candidatos, o recrutador busca no pipeline por skill ou ferramenta. Só quem tem a keyword no texto parseado aparece.</small></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><div class="flow-label">PASSO 5</div><div class="flow-text"><strong>Greenhouse AI sugere shortlist</strong><small>Para vagas de alto volume, a IA propõe uma lista curta de melhores candidatos antes do recrutador abrir o pipeline. Baseado em match com a descrição da vaga.</small></div></div>
+    </div>
+
+    <div class="alert alert-danger">
+      <div class="alert-title">⚠️ A sequência que decide seu destino</div>
+      <p>O recrutador NÃO lê 200 PDFs. Ele lê o <strong>resumo da IA</strong> → olha a <strong>barra lateral</strong> → abre o <strong>PDF só dos top candidatos</strong>. Cada etapa depende do parser ter extraído dados limpos. Um CV bonito que parseia mal perde para um CV simples que parseia limpo — porque a IA e a barra lateral são a primeira e segunda triagem.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: PARSER -->
+  <div class="section" id="parser">
+    <div class="section-tag">Seção 05</div>
+    <h2>Como o Parser lê seu currículo: seção por seção</h2>
+    <p>O parser do Greenhouse usa extração de texto de PDF/DOCX + pipeline de reconhecimento de entidades (NER). Ele não trata o documento como um bloco único — percorre seção por seção.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Seção do CV</th><th>O que o Greenhouse extrai</th><th>Falha mais comum</th><th>Como evitar</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bloco de contato</strong></td><td>Nome, e-mail, telefone, LinkedIn URL, cidade</td><td>Nome lido como imagem, ou e-mail partido por quebra de linha</td><td>Nome como primeira linha de texto real. Contato em linhas simples no corpo do documento</td></tr>
+          <tr><td><strong>Resumo (Summary)</strong></td><td>Indexado como texto buscável; alimenta o resumo da IA</td><td>Tratado como primeiro emprego quando não tem heading</td><td>Rotule como "Summary" ou "Professional Summary" em linha própria</td></tr>
+          <tr><td><strong>Experiência</strong></td><td>Empresa, cargo, datas, bullets por cargo</td><td>Datas não linkam ao empregador correto</td><td>Uma linha por cargo: Título, Empresa, Mês AAAA – Mês AAAA</td></tr>
+          <tr><td><strong>Educação</strong></td><td>Escola e grau mais recente</td><td>Abreviação de grau não reconhecida</td><td>Escreva por extenso: "Bacharelado em Design" (não apenas "BD")</td></tr>
+          <tr><td><strong>Skills</strong></td><td>Tokens separados por vírgula para filtros</td><td>Skills presas em sidebar ou enterradas em prosa</td><td>Seção dedicada "Skills", separadas por vírgula, na coluna principal</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Dados de parse: o que testes revelam</h3>
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-number">96%</div><div class="stat-label">Completude: PDF coluna única</div></div>
+      <div class="stat"><div class="stat-number">78%</div><div class="stat-label">Completude: 2 colunas / designer</div></div>
+      <div class="stat"><div class="stat-number">+23%</div><div class="stat-label">Mais keywords: coluna única</div></div>
+      <div class="stat"><div class="stat-number">31%</div><div class="stat-label">2 colunas perderam contato</div></div>
+    </div>
+    <p style="font-size:13px;color:var(--text-muted);text-align:center;margin-top:-10px">Testes com 3.200 currículos contra regras de formatação Greenhouse. Fonte: Resume Optimizer Pro, 2026.</p>
+  </div>
+
+  <!-- SEÇÃO 6: IA -->
+  <div class="section" id="ia">
+    <div class="section-tag">Seção 06</div>
+    <h2>Greenhouse AI: o que mudou em 2025/2026</h2>
+    <p>Duas mudanças nos últimos 18 meses alteraram o que candidatos precisam fazer:</p>
+
+    <h3>1. Greenhouse AI (lançamento setembro 2025)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Funcionalidade</th><th>O que faz</th><th>Impacto para o candidato</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Resumo do candidato</strong></td><td>Gera 2-4 frases resumindo seu currículo. O recrutador lê isso antes de abrir o PDF</td><td>Se o parser não extraiu suas skills ou experiências, o resumo fica vago e inútil — e o recrutador pula você</td></tr>
+          <tr><td><strong>Match scoring</strong></td><td>Ranqueia candidatos contra a vaga com base em skills, títulos e keywords de experiência</td><td>CVs que usam os termos exatos da descrição da vaga sobem no ranking. Sinônimos próximos podem não ser detectados</td></tr>
+          <tr><td><strong>Shortlist automática</strong></td><td>Para vagas de alto volume, propõe uma lista curta ao recrutador antes dele abrir o pipeline</td><td>Se o parse perdeu sua seção de skills, você não entra na shortlist sugerida</td></tr>
+          <tr><td><strong>Integração com LinkedIn</strong></td><td>Puxa dados do LinkedIn Recruiter e HireEZ para cruzar com o CV uploadado</td><td>CVs cujo conteúdo alinha com headline, título e skills do LinkedIn ganham match score mais forte</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2. Upgrade do parser (mid-2024)</h3>
+    <p>O Greenhouse reportou 15-20% menos erros de parse em PDFs e DOCX após o upgrade. PDFs exportados de ferramentas de design (vector-text) agora parseiam de forma confiável. Layouts híbridos com barra lateral estreita agora funcionam em ~80% dos casos (antes quebravam frequentemente).</p>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ A regra de ouro de 2026</div>
+      <p>Seu currículo é lido <strong>duas vezes</strong>: uma pelo recrutador (que vê o PDF) e outra pela IA (que vê apenas o texto parseado). Um PDF bonito que parseia mal <strong>perde</strong> para um PDF mais simples que parseia limpo — porque a IA só vê o parse. Otimizar para o parser É otimizar para a Greenhouse AI.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7: PROFILE VIEW -->
+  <div class="section" id="profile">
+    <div class="section-tag">Seção 07</div>
+    <h2>O que o recrutador vê: parse quebrado vs. parse limpo</h2>
+    <p>Mesmo candidato, mesma carreira, mesmas qualificações. Diferença: apenas a formatação do CV.</p>
+
+    <div class="profile-mock">
+      <div class="profile-box" style="border-top:3px solid var(--red)">
+        <h4 style="color:var(--red)">🔴 Parse quebrado (PDF com sidebar + imagem)</h4>
+        <div class="profile-field"><span class="field-label">Nome</span><span class="field-value field-empty">(desconhecido)</span></div>
+        <div class="profile-field"><span class="field-label">E-mail</span><span class="field-value field-empty">(desconhecido)</span></div>
+        <div class="profile-field"><span class="field-label">Cargo atual</span><span class="field-value">Senior Engineer</span></div>
+        <div class="profile-field"><span class="field-label">Empresa</span><span class="field-value field-empty">(desconhecida)</span></div>
+        <div class="profile-field"><span class="field-label">Skills</span><span class="field-value field-empty">(nenhuma detectada)</span></div>
+        <div class="ai-summary">"Senior engineer com background não identificável. Informações insuficientes para resumir experiência."</div>
+      </div>
+      <div class="profile-box" style="border-top:3px solid var(--green)">
+        <h4 style="color:var(--green)">🟢 Parse limpo (PDF coluna única, nome no topo)</h4>
+        <div class="profile-field"><span class="field-label">Nome</span><span class="field-value">Jessica Delfino</span></div>
+        <div class="profile-field"><span class="field-label">E-mail</span><span class="field-value">jessica@email.com</span></div>
+        <div class="profile-field"><span class="field-label">Cargo atual</span><span class="field-value">Senior Service Designer</span></div>
+        <div class="profile-field"><span class="field-label">Empresa</span><span class="field-value">Mercado Livre</span></div>
+        <div class="profile-field"><span class="field-label">Skills</span><span class="field-value">Service Design, UX Research, Jira, JTBD, Blueprint</span></div>
+        <div class="ai-summary">"Senior service designer e UX researcher com 7 anos em marketplace e logística LATAM. Conduziu pesquisa que reduziu custos de CX em 17% no Mercado Livre. Experiência em sistemas críticos aeronáuticos. Baseada em São Paulo."</div>
+      </div>
+    </div>
+    <p style="font-size:13px;text-align:center;color:var(--text-muted)">Mesma pessoa. Mesma carreira. A diferença é que no lado esquerdo, a formatação impediu o parser de extrair dados — e a IA gerou um resumo inútil.</p>
+  </div>
+
+  <!-- SEÇÃO 8: HACKS -->
+  <div class="section" id="hacks">
+    <div class="section-tag">Seção 08</div>
+    <h2>Hacks e Estratégias que funcionam</h2>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO ALTO</span><h4>1. PDF de coluna única, text-based</h4></div><p>O formato ideal para Greenhouse é um PDF exportado do Word ou Google Docs, com layout de coluna única, tipografia limpa, e todo o texto selecionável (não imagem). Isso garante 96% de completude de parse E visual bonito para o recrutador.</p><div class="hack-action"><strong>Ação:</strong> Use coluna única. Nada de sidebar com skills ou contato. Nome na primeira linha do corpo do documento (não em header/footer). Contato logo abaixo do nome. Seções com headings convencionais (Summary, Experience, Education, Skills).</div></div>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO ALTO</span><h4>2. Seção dedicada de Skills — sempre</h4></div><p>As funcionalidades de busca e shortlist da Greenhouse AI dependem fortemente de uma seção de Skills dedicada. Se você só menciona "Python" dentro de um parágrafo descrevendo um projeto, pode não aparecer quando o recrutador filtra por Python como skill.</p><div class="hack-action"><strong>Ação:</strong> Inclua uma seção rotulada "Skills" ou "Core Skills" com todos os termos técnicos separados por vírgula: "Service Design, UX Research, Jira, Miro, SQL, OKRs, JTBD, Service Blueprint, Stakeholder Management, Product Metrics". Use os termos exatos da descrição da vaga.</div></div>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO ALTO</span><h4>3. Espelhar exatamente os termos da job description</h4></div><p>O keyword search do Greenhouse trabalha com strings exatas. Se a vaga diz "Product Management" e seu CV diz "gestão de produto", a busca pode não te encontrar. Se a vaga diz "React Native" e você escreveu "React (mobile)", o sistema pode perder.</p><div class="hack-action"><strong>Ação:</strong> Antes de cada candidatura, abra a descrição da vaga, identifique todos os termos técnicos e ferramentas listados, e garanta que os que você possui aparecem no CV com a <strong>mesma grafia exata</strong>. Inclusive em inglês quando a vaga está em inglês.</div></div>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO ALTO</span><h4>4. Primeiro bullet = seu melhor resultado</h4></div><p>O recrutador no Greenhouse vê seu PDF inline. A primeira coisa que lê após nome e título é o primeiro bullet do cargo mais recente. É o momento de máxima atenção.</p><div class="hack-action"><strong>Ação:</strong> O primeiro bullet do seu cargo mais recente deve ser sua conquista mais forte e quantificada. Exemplo: "Conduzi pesquisa que embasou redução de 17% nos custos de contato CX em operação de marketplace LATAM com 50M+ usuários." Não comece com responsabilidades genéricas.</div></div>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO MÉDIO</span><h4>5. Alinhar CV com LinkedIn (match score)</h4></div><p>Greenhouse AI cruza dados do LinkedIn Recruiter com o CV uploadado. CVs cujo conteúdo alinha com headline, título e skills do LinkedIn ganham match score mais forte.</p><div class="hack-action"><strong>Ação:</strong> Garanta que seu CV e seu LinkedIn contam a mesma história: mesmos cargos, mesmas empresas, mesmas datas, mesmas skills. Inconsistências enfraquecem o match score e geram desconfiança.</div></div>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO MÉDIO</span><h4>6. Datas em formato "Mês AAAA"</h4></div><p>Formatos ambíguos como "2022 – presente" (sem mês) ou "Outono 2022 – Primavera 2024" podem fazer o parser errar a ligação entre data e empregador.</p><div class="hack-action"><strong>Ação:</strong> Use sempre "Jan 2020 – Dez 2023" ou "Janeiro 2020 – Dezembro 2023". Nunca "2020 – 2023" sem mês.</div></div>
+
+    <div class="hack"><div class="hack-header"><span class="hack-badge">IMPACTO MÉDIO</span><h4>7. Mesmo e-mail em todas as candidaturas</h4></div><p>Greenhouse deduplica por e-mail. Se você aplica com dois e-mails diferentes na mesma empresa, cria registros duplicados que podem ser flagados como suspeitos ou mesclados incorretamente.</p><div class="hack-action"><strong>Ação:</strong> Use sempre o mesmo e-mail para todas as candidaturas Greenhouse. Se já aplicou antes com outro e-mail, mantenha o novo consistente daqui para frente.</div></div>
+  </div>
+
+  <!-- SEÇÃO 9: O QUE QUEBRA -->
+  <div class="section" id="quebra">
+    <div class="section-tag">Seção 09</div>
+    <h2>O que ainda quebra no Greenhouse</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon" style="background:var(--red-bg)">🚫</div><h4>Layouts multi-coluna</h4><p>Sidebar pode ter texto inserido no meio da experiência profissional no índice de busca. Coluna única continua sendo a escolha mais segura.</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--red-bg)">🚫</div><h4>Contato em header/footer</h4><p>O parser pode ler headers e footers, mas a extração é menos confiável que conteúdo no corpo. Nome e e-mail sempre no corpo principal.</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--red-bg)">🚫</div><h4>Nome como imagem</h4><p>Templates de design que colocam o nome dentro de um header colorido ou gráfico rasterizado fazem o Greenhouse perder o nome completamente.</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--red-bg)">🚫</div><h4>Datas não-padrão</h4><p>"Outono 2022 – Primavera 2024" ou "2022 – presente" sem mês podem não linkar corretamente ao empregador.</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--red-bg)">🚫</div><h4>Skills apenas em prosa</h4><p>Mencionar ferramentas só dentro de parágrafos descritivos reduz a chance de aparecer em filtros de keyword e shortlist da IA.</p></div>
+      <div class="card"><div class="card-icon" style="background:var(--red-bg)">🚫</div><h4>PDF escaneado (imagem)</h4><p>Se o PDF é uma imagem escaneada (sem texto selecionável), o parse é zero. Nenhum dado extraído, nenhuma busca possível.</p></div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 10: MITOS -->
+  <div class="section" id="mitos">
+    <div class="section-tag">Seção 10</div>
+    <h2>Mitos vs. Realidade</h2>
+    <div class="myth-grid">
+      <div class="myth-item"><div class="myth-side">"O Greenhouse elimina candidatos automaticamente"</div><div class="fact-side">A Greenhouse AI gera resumo e match score, mas <strong>não rejeita automaticamente</strong>. A decisão final é sempre humana. Porém, se seu parse está quebrado, o recrutador humano nunca chega até você.</div></div>
+      <div class="myth-item"><div class="myth-side">"DOCX é melhor que PDF no Greenhouse"</div><div class="fact-side">Ambos parseiam bem. Mas <strong>PDF text-based é preferível</strong> porque o recrutador vê seu arquivo inline — e o PDF preserva seu design exatamente. No Workday é o contrário (DOCX é melhor).</div></div>
+      <div class="myth-item"><div class="myth-side">"CV com design bonito é penalizado"</div><div class="fact-side">No Greenhouse, design visual importa MAIS do que em outros ATSs porque o recrutador vê seu PDF real. Mas o design precisa ser <strong>parser-friendly</strong>: coluna única, texto selecionável, headings convencionais. Bonito E limpo.</div></div>
+      <div class="myth-item"><div class="myth-side">"Não preciso de seção de Skills separada"</div><div class="fact-side">A Greenhouse AI e os filtros de busca dependem fortemente de skills tokenizadas em seção dedicada. Skills enterradas em prosa podem não ser detectadas nos filtros.</div></div>
+      <div class="myth-item"><div class="myth-side">"A Greenhouse AI é diferente do parser"</div><div class="fact-side">A IA lê o <strong>mesmo texto parseado</strong>, não o PDF original. Otimizar para o parser = otimizar para a IA. Se o parser perdeu seus dados, a IA não tem nada para trabalhar.</div></div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 11: COMPARATIVO -->
+  <div class="section" id="comparativo">
+    <div class="section-tag">Seção 11</div>
+    <h2>Comparativo: Greenhouse vs. Gupy vs. InHire vs. LinkedIn</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimensão</th><th>Greenhouse</th><th>Gupy</th><th>InHire</th><th>LinkedIn</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mercado principal</strong></td><td>Tech global, startups VC</td><td>Grandes corporações BR</td><td>Startups/scale-ups BR</td><td>Transversal (global)</td></tr>
+          <tr><td><strong>O que recrutador vê</strong></td><td>Seu PDF real + sidebar parseada + resumo IA</td><td>Ranking 0-100 + formulário parseado</td><td>Classificação Alto/Médio/Baixo fit</td><td>Perfil público + headline</td></tr>
+          <tr><td><strong>IA</strong></td><td>Resumo, match scoring, shortlist (não rejeita)</td><td>Gaia: score 0-100 (NLP)</td><td>Agente de Triagem: 3 faixas</td><td>LLMs contextuais</td></tr>
+          <tr><td><strong>Design visual importa?</strong></td><td><strong>Sim</strong> — recrutador vê o PDF</td><td>Não — parser precisa de texto limpo</td><td>Pouco — foco no texto</td><td>Sim — perfil é visual</td></tr>
+          <tr><td><strong>Formato ideal de CV</strong></td><td>PDF text-based, coluna única, design limpo</td><td>.docx coluna única, sem design</td><td>Texto rico com contexto narrativo</td><td>Perfil completo = CV</td></tr>
+          <tr><td><strong>Formulário do candidato</strong></td><td>Leve (3-5 campos)</td><td>Médio (vários campos)</td><td>Variável por empresa</td><td>Easy Apply ou redirect</td></tr>
+          <tr><td><strong>Seção de Skills</strong></td><td>Crítica — alimenta filtros e IA</td><td>Campo "Habilidades" dedicado</td><td>Avaliada via critérios do RH</td><td>Até 50 competências</td></tr>
+          <tr><td><strong>Portal centralizado</strong></td><td>Não (páginas por empresa)</td><td>Sim (portal.gupy.io)</td><td>Não</td><td>Sim (aba Vagas)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 12: CHECKLIST -->
+  <div class="section" id="checklist">
+    <div class="section-tag">Seção 12</div>
+    <h2>Checklist pré-candidatura Greenhouse</h2>
+    <ul class="checklist">
+      <li><strong>PDF text-based</strong> exportado do Word ou Google Docs (não PDF escaneado)</li>
+      <li><strong>Layout coluna única</strong> (ou duas colunas simples com leitura consistente)</li>
+      <li><strong>Nome na primeira linha</strong> do corpo do documento (não em header de imagem)</li>
+      <li><strong>Contato no corpo</strong>, não em header/footer do documento</li>
+      <li><strong>Headings convencionais:</strong> Summary, Experience, Education, Skills</li>
+      <li><strong>Seção Skills dedicada</strong> com termos separados por vírgula</li>
+      <li><strong>Datas em "Mês AAAA"</strong> em todas as experiências</li>
+      <li><strong>Primeiro bullet</strong> do cargo mais recente = sua conquista mais forte com número</li>
+      <li><strong>Termos exatos</strong> da descrição da vaga presentes verbatim no CV</li>
+      <li><strong>LinkedIn alinhado</strong> com o CV (mesmos cargos, empresas, skills)</li>
+      <li><strong>Mesmo e-mail</strong> em todas as candidaturas Greenhouse</li>
+      <li><strong>Tamanho do arquivo:</strong> máximo 5MB</li>
+    </ul>
+  </div>
+
+  <!-- RESUMO -->
+  <div class="section">
+    <div class="section-tag">Resumo Executivo</div>
+    <h2>As 3 Regras de Ouro do Greenhouse</h2>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+      <div class="card" style="border-left:3px solid var(--gh)"><h4>1. Bonito para o humano, limpo para o parser</h4><p>Greenhouse é o único ATS onde design visual importa — porque o recrutador vê seu PDF. Mas a IA só lê o parse. Coluna única, texto selecionável, headings padrão: o meio-termo perfeito.</p></div>
+      <div class="card" style="border-left:3px solid var(--gh)"><h4>2. Skills dedicadas, termos exatos</h4><p>A seção de Skills alimenta os filtros do recrutador e a shortlist da IA. Use os mesmos termos da vaga. Sem seção de Skills = invisível nos filtros.</p></div>
+      <div class="card" style="border-left:3px solid var(--gh)"><h4>3. O resumo da IA é seu primeiro filtro</h4><p>Desde setembro 2025, o recrutador lê 2-4 frases geradas pela IA antes de decidir abrir seu PDF. Se o parser quebrou, o resumo é inútil e você é ignorada.</p></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Guia Estratégico: Como Dominar o Greenhouse</strong></p>
+    <p>Compilado em Agosto 2026 · Fontes: Greenhouse (site oficial, help center, engineering blog), Resume Optimizer Pro (testes com 3.200 CVs), Capterra, BestRecruitingTools, iSmartRecruit, Jobscan</p>
+    <p style="margin-top:12px;color:var(--gh)">Série completa: Gupy · LinkedIn · InHire · Greenhouse ✓</p>
+  </div>
+
+</div>
+</body>
+</html>

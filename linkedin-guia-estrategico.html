@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Estratégico: Como Dominar o LinkedIn</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F1A;
+    --surface: #141929;
+    --surface-2: #1C2236;
+    --surface-3: #242A3D;
+    --border: #2A3150;
+    --text: #E2E6F0;
+    --text-muted: #8B92A8;
+    --accent: #0A66C2;
+    --accent-light: #70B5F9;
+    --green: #00D68F;
+    --green-bg: rgba(0,214,143,0.08);
+    --red: #FF6B6B;
+    --red-bg: rgba(255,107,107,0.08);
+    --yellow: #FECA57;
+    --yellow-bg: rgba(254,202,87,0.08);
+    --blue: #54A0FF;
+    --blue-bg: rgba(84,160,255,0.08);
+    --orange: #FF9F43;
+    --linkedin: #0A66C2;
+    --linkedin-bg: rgba(10,102,194,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .hero { padding: 80px 0 60px; border-bottom: 1px solid var(--border); text-align: center; }
+  .hero-badge { display: inline-block; background: var(--linkedin); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 4px; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 900; line-height: 1.15; margin-bottom: 16px; letter-spacing: -1px; }
+  .hero h1 span { color: var(--accent-light); }
+  .hero p { font-size: 17px; color: var(--text-muted); max-width: 620px; margin: 0 auto; }
+  .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; margin: 40px 0; overflow: hidden; }
+  .stat { background: var(--surface); padding: 24px; text-align: center; }
+  .stat-number { font-size: 28px; font-weight: 800; color: var(--accent-light); font-family: 'JetBrains Mono', monospace; }
+  .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+  .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--linkedin); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .section h2 { font-size: clamp(24px, 3.5vw, 32px); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.5px; }
+  .section h3 { font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--text); }
+  .section p { color: var(--text-muted); margin-bottom: 16px; font-size: 15px; }
+  .table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; padding: 14px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(10,102,194,0.04); }
+  td strong { color: var(--text); font-weight: 600; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+  .card-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px; }
+  .card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+  .alert { border-radius: 8px; padding: 20px 24px; margin: 24px 0; border-left: 3px solid; font-size: 14px; line-height: 1.7; }
+  .alert-danger { background: var(--red-bg); border-color: var(--red); }
+  .alert-danger .alert-title { color: var(--red); }
+  .alert-success { background: var(--green-bg); border-color: var(--green); }
+  .alert-success .alert-title { color: var(--green); }
+  .alert-warning { background: var(--yellow-bg); border-color: var(--yellow); }
+  .alert-warning .alert-title { color: var(--yellow); }
+  .alert-info { background: var(--blue-bg); border-color: var(--blue); }
+  .alert-info .alert-title { color: var(--blue); }
+  .alert-linkedin { background: var(--linkedin-bg); border-color: var(--linkedin); }
+  .alert-linkedin .alert-title { color: var(--accent-light); }
+  .alert-title { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .alert p { color: var(--text); margin: 0; }
+  .step { display: flex; gap: 20px; margin: 20px 0; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  .step-num { flex-shrink: 0; width: 36px; height: 36px; background: var(--linkedin); color: #fff; font-weight: 800; font-size: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; }
+  .step-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .step-content p { font-size: 13px; color: var(--text-muted); margin: 0; }
+  .step-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 3px; margin-top: 8px; }
+  .tag-critical { background: var(--red-bg); color: var(--red); }
+  .tag-important { background: var(--yellow-bg); color: var(--yellow); }
+  .tag-tip { background: var(--green-bg); color: var(--green); }
+  .hack { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin: 16px 0; }
+  .hack-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .hack-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-bg); padding: 4px 10px; border-radius: 4px; white-space: nowrap; }
+  .hack h4 { font-size: 16px; font-weight: 700; }
+  .hack p { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
+  .hack-action { background: var(--surface-3); border-radius: 6px; padding: 14px 18px; font-size: 13px; color: var(--text); border-left: 2px solid var(--linkedin); }
+  .hack-action strong { color: var(--accent-light); }
+  .myth-grid { display: grid; gap: 12px; margin: 20px 0; }
+  .myth-item { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
+  .myth-side, .fact-side { padding: 18px 20px; font-size: 13px; }
+  .myth-side { background: var(--red-bg); }
+  .myth-side::before { content: '✗ MITO'; display: block; font-size: 10px; font-weight: 800; color: var(--red); letter-spacing: 1px; margin-bottom: 6px; }
+  .fact-side { background: var(--green-bg); }
+  .fact-side::before { content: '✓ REALIDADE'; display: block; font-size: 10px; font-weight: 800; color: var(--green); letter-spacing: 1px; margin-bottom: 6px; }
+  .checklist { list-style: none; margin: 20px 0; }
+  .checklist li { padding: 12px 16px 12px 44px; position: relative; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: ''; position: absolute; left: 16px; top: 14px; width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 3px; }
+  .checklist li strong { color: var(--text); }
+  .flow { display: flex; flex-direction: column; gap: 4px; margin: 24px 0; }
+  .flow-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  .flow-arrow { text-align: center; color: var(--text-muted); font-size: 18px; padding: 0 0 0 18px; }
+  .flow-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--linkedin); font-weight: 600; flex-shrink: 0; width: 80px; }
+  .flow-text { font-size: 14px; color: var(--text); }
+  .flow-text small { display: block; color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 40px 0; }
+  .toc h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 16px; }
+  .toc ol { list-style: none; counter-reset: toc-counter; }
+  .toc li { counter-increment: toc-counter; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .toc li:last-child { border-bottom: none; }
+  .toc li::before { content: counter(toc-counter, decimal-leading-zero); font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--linkedin); margin-right: 12px; font-size: 12px; }
+  .toc a { color: var(--text); text-decoration: none; }
+  .toc a:hover { color: var(--accent-light); }
+  .ssi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .ssi-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+  .ssi-score { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 800; color: var(--accent-light); }
+  .ssi-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .ssi-desc { font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+  .versus { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; margin: 24px 0; align-items: start; }
+  .versus-col { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .versus-divider { display: flex; align-items: center; font-weight: 800; color: var(--text-muted); font-size: 14px; padding-top: 20px; }
+  .footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 12px; }
+  .footer p { margin-bottom: 4px; }
+  @media (max-width: 640px) {
+    .myth-item { grid-template-columns: 1fr; }
+    .step { flex-direction: column; gap: 12px; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 48px 0 40px; }
+    .section { padding: 40px 0; }
+    .versus { grid-template-columns: 1fr; }
+    .versus-divider { justify-content: center; padding: 0; }
+  }
+  @media print {
+    body { background: #fff; color: #111; }
+    .alert, .card, .hack, .step { break-inside: avoid; }
+    table { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Inteligência de Processo Seletivo</div>
+    <h1>Guia Estratégico:<br><span>Como Dominar o LinkedIn</span></h1>
+    <p>A plataforma que funciona como mecanismo de busca, rede social e ATS simultaneamente. Entenda o algoritmo, o que o recrutador vê, e como ser encontrada — não apenas candidatar-se.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">1B+</div>
+      <div class="stat-label">Membros globais</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">75M+</div>
+      <div class="stat-label">Membros no Brasil</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Canais (busca + social)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0–100</div>
+      <div class="stat-label">SSI (Social Selling Index)</div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#oque">O que é o LinkedIn (e o que ele NÃO é)</a></li>
+      <li><a href="#diferenca">Diferença fundamental: LinkedIn vs. Gupy</a></li>
+      <li><a href="#candidato">Como funciona para o Candidato</a></li>
+      <li><a href="#recrutador">Como funciona para o Recrutador (LinkedIn Recruiter)</a></li>
+      <li><a href="#algoritmo">O Algoritmo: como o LinkedIn decide quem aparece</a></li>
+      <li><a href="#ssi">SSI — Social Selling Index</a></li>
+      <li><a href="#perfil">Anatomia do Perfil Perfeito: seção por seção</a></li>
+      <li><a href="#hacks">Hacks e Estratégias que funcionam</a></li>
+      <li><a href="#funcionalidades">Funcionalidades subutilizadas</a></li>
+      <li><a href="#mitos">Mitos vs. Realidade</a></li>
+      <li><a href="#filtros">O que Recrutadores filtram no LinkedIn Recruiter</a></li>
+      <li><a href="#conteudo">Estratégia de Conteúdo para Visibilidade</a></li>
+      <li><a href="#erros">Erros fatais que te tornam invisível</a></li>
+      <li><a href="#checklist">Checklist semanal de manutenção</a></li>
+    </ol>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section" id="oque">
+    <div class="section-tag">Seção 01</div>
+    <h2>O que é o LinkedIn (e o que ele NÃO é)</h2>
+    <p>O LinkedIn é a maior rede profissional do mundo, propriedade da Microsoft, com mais de 1 bilhão de membros em 200+ países. Mas chamá-lo de "rede social" é subestimá-lo. O LinkedIn opera em <strong>três camadas simultâneas</strong>:</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--linkedin-bg)">🔍</div>
+        <h4>Mecanismo de Busca</h4>
+        <p>Funciona como o Google: recrutadores pesquisam por palavras-chave (cargo, habilidades, setor, localização) e o algoritmo exibe os perfis que melhor correspondem. Se seus termos não estão no perfil, você não aparece.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--linkedin-bg)">🌐</div>
+        <h4>Rede Social Profissional</h4>
+        <p>Feed de conteúdo, publicações, comentários, conexões. O algoritmo prioriza perfis ativos — quem publica e interage é mais visível do que quem apenas tem perfil parado.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--linkedin-bg)">📋</div>
+        <h4>Plataforma de Vagas (ATS lite)</h4>
+        <p>Empresas publicam vagas diretamente. Candidatura simplificada (Easy Apply) ou redirecionamento para ATS externo (Gupy, Greenhouse, etc). Muitas vagas são exclusivas do LinkedIn.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ A diferença que importa</div>
+      <p>Na Gupy, você <strong>vai até a vaga</strong>. No LinkedIn, a vaga <strong>pode vir até você</strong> — se seu perfil estiver otimizado. Recrutadores fazem buscas ativas por candidatos mesmo que eles não tenham se candidatado. Isso significa que um perfil bem construído trabalha para você 24/7, mesmo quando você não está aplicando.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 -->
+  <div class="section" id="diferenca">
+    <div class="section-tag">Seção 02</div>
+    <h2>Diferença fundamental: LinkedIn vs. Gupy</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th>Gupy</th>
+            <th>LinkedIn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tipo</strong></td>
+            <td>ATS puro (sistema de gestão de processo seletivo)</td>
+            <td>Rede social + mecanismo de busca + plataforma de vagas</td>
+          </tr>
+          <tr>
+            <td><strong>Quem encontra quem</strong></td>
+            <td>Você vai até a vaga e a IA te ranqueia</td>
+            <td>Recrutador pode te encontrar proativamente, mesmo sem vaga aberta</td>
+          </tr>
+          <tr>
+            <td><strong>Perfil</strong></td>
+            <td>Formulário estruturado com campos fixos</td>
+            <td>Perfil público, dinâmico, com conteúdo social</td>
+          </tr>
+          <tr>
+            <td><strong>IA</strong></td>
+            <td>Gaia: matching por palavras-chave (NLP + Watson)</td>
+            <td>LLMs que interpretam contexto e trajetória, não só keywords</td>
+          </tr>
+          <tr>
+            <td><strong>Visibilidade depende de</strong></td>
+            <td>Score de afinidade com a vaga específica</td>
+            <td>Completude do perfil + atividade + rede + conteúdo</td>
+          </tr>
+          <tr>
+            <td><strong>Custo</strong></td>
+            <td>Gratuito para candidato</td>
+            <td>Gratuito (básico) / Premium Career: ~R$80/mês</td>
+          </tr>
+          <tr>
+            <td><strong>Personalização</strong></td>
+            <td>Apenas campo "Apresente-se" por vaga</td>
+            <td>Perfil inteiro é editável a qualquer momento</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: CANDIDATO -->
+  <div class="section" id="candidato">
+    <div class="section-tag">Seção 03</div>
+    <h2>Como funciona para o Candidato</h2>
+
+    <h3>Canal 1: Candidatura Ativa (você vai atrás da vaga)</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Buscar vagas</h4>
+        <p>Aba "Vagas" → busca por palavras-chave, localização, nível de experiência, tipo de contrato, modalidade (presencial/remoto/híbrido), data de publicação. Filtrar por "Candidatura Simplificada" para vagas que não redirecionam para ATS externo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Candidatar-se</h4>
+        <p><strong>"Candidatura Simplificada" (Easy Apply):</strong> candidatura feita diretamente no LinkedIn. Usa os dados do seu perfil + upload de CV. Rápido, mas concorrência alta.<br>
+        <strong>"Candidate-se":</strong> redireciona para site da empresa ou ATS externo (Gupy, Greenhouse, etc). Mais demorado, menos concorrência.</p>
+        <span class="step-tag tag-important">Dica</span>
+        <p style="margin-top:8px;">Vagas com Easy Apply recebem volume massivo de candidaturas. Priorizar vagas publicadas recentemente (últimas 24-48h) aumenta as chances.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Acompanhar</h4>
+        <p>Aba "Vagas" → "Minhas Candidaturas" mostra status. Diferente da Gupy, no LinkedIn você pode ver quantos candidatos se inscreveram e como seu perfil se compara (com Premium).</p>
+      </div>
+    </div>
+
+    <h3>Canal 2: Descoberta Passiva (o recrutador te encontra)</h3>
+    <p>Este é o canal que diferencia o LinkedIn de qualquer ATS. Recrutadores usando o LinkedIn Recruiter fazem buscas ativas por perfis — você pode receber convite para processo seletivo sem ter se candidatado. Para isso funcionar, seu perfil precisa estar <strong>otimizado para busca</strong> e <strong>sinalizado como disponível</strong>.</p>
+  </div>
+
+  <!-- SEÇÃO 4: RECRUTADOR -->
+  <div class="section" id="recrutador">
+    <div class="section-tag">Seção 04</div>
+    <h2>Como funciona para o Recrutador (LinkedIn Recruiter)</h2>
+    <p>O LinkedIn Recruiter é uma ferramenta premium (custa milhares de reais/mês para a empresa) que dá ao recrutador poderes de busca avançada. Entender o que ele faz é entender como ser encontrada.</p>
+
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-label">PASSO 1</div>
+        <div class="flow-text">
+          <strong>Busca por filtros avançados</strong>
+          <small>O recrutador digita critérios: cargo, localização, habilidades, empresas anteriores, senioridade, setor, idiomas, instituição de ensino. Usa operadores booleanos (AND, OR, NOT) para refinar.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 2</div>
+        <div class="flow-text">
+          <strong>Recebe lista de perfis ranqueados</strong>
+          <small>O algoritmo retorna até 1.000 candidatos (40 páginas) ordenados por relevância. Perfis com Open to Work, atividade recente e alta completude sobem no ranking. Keywords do perfil são destacadas.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 3</div>
+        <div class="flow-text">
+          <strong>Visualiza perfis e salva em projetos</strong>
+          <small>O recrutador abre perfis, lê headline, resumo, experiências. Salva candidatos em pipelines organizados por vaga. Pode ocultar perfis já visualizados.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 4</div>
+        <div class="flow-text">
+          <strong>Envia InMail (mensagem direta)</strong>
+          <small>Mensagens personalizadas para candidatos, mesmo fora da rede de contatos. O recrutador pode ver se você visualizou, respondeu ou ignorou.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 5</div>
+        <div class="flow-text">
+          <strong>IA recomenda perfis automaticamente</strong>
+          <small>O LinkedIn Recruiter sugere candidatos com base na vaga, nos perfis já salvos e nos padrões de contratação anteriores da empresa. Seu perfil pode ser recomendado sem que você tenha feito nada — se estiver otimizado.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-linkedin">
+      <div class="alert-title">🔎 O que o recrutador vê quando te encontra</div>
+      <p>Na busca, o recrutador vê: <strong>foto</strong>, <strong>nome</strong>, <strong>headline</strong> (título profissional), <strong>localização</strong>, <strong>empresa atual</strong>, <strong>tempo na posição</strong>, e se você tem o badge <strong>Open to Work</strong>. As keywords da busca aparecem <strong>destacadas</strong> nas seções Resumo, Experiência e Competências do seu perfil. Se a headline não comunica o que você faz, o recrutador pula para o próximo perfil em 3 segundos.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: ALGORITMO -->
+  <div class="section" id="algoritmo">
+    <div class="section-tag">Seção 05</div>
+    <h2>O Algoritmo: como o LinkedIn decide quem aparece</h2>
+
+    <p>O LinkedIn reformulou seu algoritmo com modelos de linguagem (LLMs). A mudança principal: ele agora interpreta <strong>contexto e trajetória</strong>, não apenas palavras-chave isoladas. Ou seja, ele entende toda a sequência profissional como uma narrativa.</p>
+
+    <h3>Os dois algoritmos que te afetam</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Algoritmo</th>
+            <th>O que faz</th>
+            <th>O que alimenta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Algoritmo de Busca (Recruiter)</strong></td>
+            <td>Determina em qual posição seu perfil aparece quando um recrutador faz uma busca</td>
+            <td>Keywords no perfil (headline, resumo, experiências, habilidades), completude do perfil, atividade recente, sinal Open to Work, relevância contextual</td>
+          </tr>
+          <tr>
+            <td><strong>Algoritmo de Feed (Conteúdo)</strong></td>
+            <td>Determina o alcance das suas publicações e a sua visibilidade no feed de outros</td>
+            <td>Engajamento por profundidade (comentários > curtidas), tempo de leitura, salvamentos, consistência de publicação, relevância do conteúdo para a rede</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>O que o algoritmo de busca prioriza</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Fator</th>
+            <th>Peso</th>
+            <th>Implicação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Correspondência de keywords</strong></td>
+            <td><strong style="color:var(--green)">ALTO</strong></td>
+            <td>Termos na headline, resumo, experiências e habilidades são comparados com a busca do recrutador. Se o recrutador busca "Product Manager" e seu título é "UX Researcher", você não aparece nessa busca</td>
+          </tr>
+          <tr>
+            <td><strong>Completude do perfil</strong></td>
+            <td><strong style="color:var(--green)">ALTO</strong></td>
+            <td>Perfis completos (foto, headline, resumo, experiências detalhadas, habilidades, formação, recomendações) têm prioridade</td>
+          </tr>
+          <tr>
+            <td><strong>Sinal Open to Work</strong></td>
+            <td><strong style="color:var(--green)">ALTO</strong></td>
+            <td>Perfis com Open to Work ativado (mesmo no modo privado, apenas para recrutadores) aparecem mais alto nas buscas do Recruiter</td>
+          </tr>
+          <tr>
+            <td><strong>Atividade recente</strong></td>
+            <td><strong style="color:var(--yellow)">MÉDIO</strong></td>
+            <td>Perfis que publicam, comentam e interagem são considerados "ativos" e têm mais visibilidade que perfis parados</td>
+          </tr>
+          <tr>
+            <td><strong>Rede de conexões</strong></td>
+            <td><strong style="color:var(--yellow)">MÉDIO</strong></td>
+            <td>Conexões de 1º e 2º grau com o recrutador ou com a empresa são priorizadas</td>
+          </tr>
+          <tr>
+            <td><strong>Engajamento contextual</strong></td>
+            <td><strong style="color:var(--yellow)">MÉDIO</strong></td>
+            <td>Se você interage com conteúdo sobre Product Management, o algoritmo entende seu interesse nessa direção e ajusta sua visibilidade para recrutadores dessa área</td>
+          </tr>
+          <tr>
+            <td><strong>Verificação de perfil</strong></td>
+            <td><strong style="color:var(--text-muted)">MARGINAL</strong></td>
+            <td>Perfis verificados (identidade, local de trabalho, instituição) ganham selo e tendem a ter mais visibilidade</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-danger">
+      <div class="alert-title">⚠️ A mudança de 2025/2026 que você precisa entender</div>
+      <p>O novo algoritmo do LinkedIn usa <strong>LLMs para interpretar contexto profissional como uma sequência narrativa</strong>, não apenas keywords isoladas. Isso significa que apresentar um contexto profissional rico e coerente ajuda mais do que listas genéricas de habilidades. Um perfil com experiências detalhadas, resultados concretos e uma narrativa clara de transição profissional será melhor interpretado do que um perfil com 50 skills avulsas e descrições vagas.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6: SSI -->
+  <div class="section" id="ssi">
+    <div class="section-tag">Seção 06</div>
+    <h2>SSI — Social Selling Index</h2>
+    <p>O SSI é uma pontuação de 0 a 100 criada pelo LinkedIn que mede quão bem você usa a plataforma. Atualiza quase diariamente. Perfis com SSI alto recebem mais visibilidade orgânica, mais respostas a InMails (até 3x mais) e mais alcance no feed. Acesse gratuitamente em: <strong>linkedin.com/sales/ssi</strong></p>
+
+    <div class="ssi-grid">
+      <div class="ssi-card">
+        <div class="ssi-score">/25</div>
+        <div class="ssi-label">Marca Profissional</div>
+        <div class="ssi-desc">Perfil completo, foto profissional, headline clara, resumo bem escrito, publicações relevantes</div>
+      </div>
+      <div class="ssi-card">
+        <div class="ssi-score">/25</div>
+        <div class="ssi-label">Encontrar as Pessoas Certas</div>
+        <div class="ssi-desc">Uso de busca avançada, conexões com decisores e recrutadores do seu setor, filtros estratégicos</div>
+      </div>
+      <div class="ssi-card">
+        <div class="ssi-score">/25</div>
+        <div class="ssi-label">Interagir com Insights</div>
+        <div class="ssi-desc">Publicar conteúdo, comentar com substância, compartilhar artigos do setor com perspectiva própria</div>
+      </div>
+      <div class="ssi-card">
+        <div class="ssi-score">/25</div>
+        <div class="ssi-label">Construir Relacionamentos</div>
+        <div class="ssi-desc">Conexões aceitas, mensagens respondidas, interações de qualidade, rede qualificada</div>
+      </div>
+    </div>
+
+    <p>Especialistas consideram que um SSI acima de <strong>65</strong> já traz benefícios reais de visibilidade. Acima de <strong>70</strong>, o alcance orgânico cresce significativamente.</p>
+  </div>
+
+  <!-- SEÇÃO 7: PERFIL -->
+  <div class="section" id="perfil">
+    <div class="section-tag">Seção 07</div>
+    <h2>Anatomia do Perfil Perfeito: seção por seção</h2>
+    <p>Cada seção do perfil tem um papel específico — tanto para o algoritmo quanto para o recrutador humano. O algoritmo indexa o texto completo, mas o recrutador toma decisão em segundos com base na impressão visual.</p>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--linkedin-bg);color:var(--accent-light)">SEÇÃO CRÍTICA</span>
+        <h4>Foto de Perfil</h4>
+      </div>
+      <p>Foto profissional, bem iluminada, fundo neutro, enquadramento do rosto/ombros. Perfis com foto recebem até 9x mais solicitações de conexão e 21x mais visualizações.</p>
+      <div class="hack-action">
+        <strong>Regra:</strong> Sem filtros, sem selfie, sem foto de evento cortada. Fundo limpo, roupa que você usaria em uma reunião. Se não tem foto profissional, use IA (como ferramentas de foto profissional por IA) ou peça para alguém tirar contra parede branca com luz natural.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--red-bg);color:var(--red)">MAIS IMPORTANTE</span>
+        <h4>Headline (Título Profissional)</h4>
+      </div>
+      <p>Aparece em TODA busca, em TODA interação, em CADA comentário que você faz. É a primeira coisa que o recrutador lê. Tem 220 caracteres. A headline deve reunir: <strong>cargo + especialidades + setor</strong>. O algoritmo a indexa como campo prioritário.</p>
+      <div class="hack-action">
+        <strong>Fórmula:</strong> [Cargo-alvo] | [Especialidade 1] · [Especialidade 2] | [Setor/Contexto]<br><br>
+        <strong>❌ Ruim:</strong> "Em busca de recolocação" / "Open to work" / "Profissional dedicado em busca de novos desafios"<br>
+        <strong>❌ Ruim:</strong> Apenas o cargo atual sem contexto ("UX Researcher")<br>
+        <strong>✅ Bom:</strong> "Product Manager | Service Design · Métricas de Produto · Logística LATAM | Ex-Mercado Livre"<br>
+        <strong>✅ Bom:</strong> "Senior Service Designer & UX Researcher | Marketplace · Logistics · Strategic Design | Data-Informed Product Decisions"
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--linkedin-bg);color:var(--accent-light)">SEÇÃO CRÍTICA</span>
+        <h4>Sobre (Resumo / About)</h4>
+      </div>
+      <p>Até 2.600 caracteres. Escreva em primeira pessoa. É o seu elevator pitch. O LinkedIn prioriza perfis com seção "Sobre" completa — um resumo bem escrito com palavras-chave pode triplicar as visualizações. O algoritmo indexa todo o texto como keywords potenciais.</p>
+      <div class="hack-action">
+        <strong>Estrutura recomendada:</strong><br>
+        — <strong>1º parágrafo:</strong> Quem você é + keywords principais + o que entrega<br>
+        — <strong>2º parágrafo:</strong> Trajetória com contexto (setores, escala, impactos)<br>
+        — <strong>3º parágrafo:</strong> Transição / direção atual + o que busca<br>
+        — <strong>Fechamento:</strong> Convite para contato<br><br>
+        Use as mesmas palavras-chave das vagas que você quer. Seja específica. Inclua termos técnicos do setor-alvo (Product Management, métricas, roadmap, discovery, delivery, OKRs).
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--linkedin-bg);color:var(--accent-light)">SEÇÃO CRÍTICA</span>
+        <h4>Experiência Profissional</h4>
+      </div>
+      <p>Não liste apenas cargos. Detalhe responsabilidades, resultados e projetos com números. O algoritmo indexa cada ferramenta, metodologia e resultado mencionado — cada termo vira uma keyword potencial. Resultados mensuráveis são o que separa um perfil que gera clique de um que gera scroll.</p>
+      <div class="hack-action">
+        <strong>Para cada experiência:</strong><br>
+        — Título do cargo (use termos que o mercado busca)<br>
+        — Descrição: O que fez + Em qual contexto + Com qual resultado<br>
+        — Inclua ferramentas e metodologias usadas naturalmente no texto<br>
+        — Métricas sempre que possível e verdadeiras<br><br>
+        <strong>❌ Ruim:</strong> "Responsável por pesquisas de UX"<br>
+        <strong>✅ Bom:</strong> "Conduzi pesquisa com usuários (qualitativa e quantitativa) que embasou redução de 17% nos custos de contato CX em operação com 50M+ usuários. Mapeamento de jornada, service blueprint e co-criação com stakeholders de operações até diretoria."
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--yellow-bg);color:var(--yellow)">PESO DIRETO</span>
+        <h4>Competências / Habilidades (Skills)</h4>
+      </div>
+      <p>Até 50 competências. A seção de habilidades tem peso direto na visibilidade de busca. Os recrutadores no LinkedIn Recruiter filtram por competências como um dos critérios booleanos — se a skill não está listada, você pode não aparecer.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Liste 50 competências relevantes para os cargos que você busca. Priorize as que aparecem nas descrições das vagas-alvo. Peça endorsements (confirmações) de colegas — perfis com habilidades confirmadas por outros têm mais peso. Reorganize para que as top 3 exibidas sejam as mais estratégicas.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--green-bg);color:var(--green)">DIFERENCIAL</span>
+        <h4>Recomendações</h4>
+      </div>
+      <p>Recomendações escritas por colegas, gestores ou clientes adicionam credibilidade que nenhuma seção do perfil sozinha consegue. Recrutadores leem recomendações quando estão entre dois candidatos semelhantes.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Peça 3-5 recomendações estratégicas. Direcione o pedido: "Você poderia escrever sobre [projeto X] e [competência Y]?" Priorize ex-gestores e colegas de projetos onde você teve impacto mensurável.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="background:var(--green-bg);color:var(--green)">DIFERENCIAL</span>
+        <h4>Destaque (Featured)</h4>
+      </div>
+      <p>Seção para fixar publicações, artigos, links ou documentos no topo do perfil. É a vitrine visual do seu trabalho.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Fixe 2-4 itens: um post sobre sua visão de produto/service design, um case publicado, um link para portfólio ou projeto, uma apresentação. Isso mostra ao recrutador que você vai além do CV.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 8: HACKS -->
+  <div class="section" id="hacks">
+    <div class="section-tag">Seção 08</div>
+    <h2>Hacks e Estratégias que funcionam</h2>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>1. Headline como ferramenta de busca, não como status</h4>
+      </div>
+      <p>Recrutadores buscam por cargo. "Em busca de recolocação" não é um cargo — ninguém digita isso na busca. Use a headline para incluir o cargo que você quer ocupar + palavras-chave do setor.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Reescreva sua headline hoje. Inclua: cargo-alvo (Product Manager, Service Designer), especialidades (métricas, logística, marketplace), contexto (LATAM, fintech, e-commerce). Os 220 caracteres mais importantes do seu LinkedIn.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>2. Ativar Open to Work (modo privado)</h4>
+      </div>
+      <p>O Open to Work em modo "Apenas recrutadores" faz seu perfil aparecer mais alto nas buscas do LinkedIn Recruiter, com um badge verde visível apenas para quem tem licença Recruiter. Dura 6 meses e pode ser renovado. Gratuito.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Ative agora: Perfil → "Aberto a" → "Encontrar um novo emprego" → Selecione "Apenas recrutadores". Defina os cargos que busca (até 5), localizações e disponibilidade. O risco do seu empregador atual ver é muito baixo nesse modo.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>3. Botão "Tenho Interesse" nas páginas de empresas</h4>
+      </div>
+      <p>Disponível na aba "Sobre" ou "Vida" da página de empresas. Permite sinalizar interesse de forma privada, sem candidatar-se a uma vaga específica. Seu perfil passa a aparecer nas buscas de recrutadores daquela empresa via LinkedIn Recruiter. Aceita até 50 empresas por vez. Gratuito.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Vá até a página das suas 10-20 empresas-alvo (iFood, Itaú, Nubank, Boticário, Loggi, etc.) e clique em "Tenho Interesse" em cada uma. Isso é invisível para qualquer pessoa — só recrutadores com Recruiter veem.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>4. Comentar em posts de recrutadores e líderes de empresas-alvo</h4>
+      </div>
+      <p>O novo algoritmo pondera engajamento por profundidade — comentários substanciais pesam mais que curtidas. Ao comentar em publicações de gestores e recrutadores das empresas que você quer, você aparece na timeline deles, eles veem sua headline, e seu perfil ganha atividade. É networking sem ser invasivo.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Identifique 5-10 recrutadores e líderes de produto/design nas suas empresas-alvo. Comente em seus posts com contribuições de 2-4 linhas que agreguem valor (uma perspectiva, um dado, uma pergunta inteligente). Não faça isso para bajular — faça para demonstrar pensamento. 15-30 minutos, 3x por semana.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO MÉDIO</span>
+        <h4>5. Alertas personalizados por empresa</h4>
+      </div>
+      <p>Além dos alertas padrão por keyword, você pode criar alertas por empresa específica. Quem define uma lista de empresas-alvo e ativa notificações recebe vagas antes que elas ganhem visibilidade no feed geral.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Siga as páginas das suas empresas-alvo. Ative "Alertas de vagas" em cada uma. Configure alertas de busca com termos como "Product Manager", "Service Designer", "Strategy & Operations" nas localizações relevantes.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO MÉDIO</span>
+        <h4>6. Verificação de perfil</h4>
+      </div>
+      <p>O LinkedIn oferece selos gratuitos de verificação de identidade, local de trabalho e instituição de ensino. No Brasil, a verificação de identidade é feita pelo app via Persona (leitura de passaporte NFC). Perfis verificados ganham um selo e tendem a receber mais visibilidade em buscas.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Verifique seu perfil via app do LinkedIn. Verifique também a instituição de ensino (Insper) se disponível. O selo é um sinal de confiança para recrutadores que veem dezenas de perfis por dia.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO MÉDIO</span>
+        <h4>7. Engajamento contextual direciona o algoritmo</h4>
+      </div>
+      <p>Se você passa semanas interagindo com publicações sobre Product Management, automação de processos ou logística, o sistema entende que há um interesse emergente nessa direção — e ajusta sua visibilidade para recrutadores que buscam candidatos nessa interseção.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Interaja (curtir, comentar, salvar) consistentemente com conteúdo de Product Management, gestão de produto, OKRs, métricas. Siga hashtags relevantes (#productmanagement, #servicedesign, #uxresearch). O algoritmo aprende o que você sinaliza.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge" style="color:var(--yellow);background:var(--yellow-bg)">PREMIUM</span>
+        <h4>8. LinkedIn Premium Career (R$80/mês)</h4>
+      </div>
+      <p>Aumenta visibilidade em buscas de recrutadores, mostra quem visitou seu perfil (últimos 90 dias), comparação com outros candidatos, InMails para contatar recrutadores fora da sua rede, e insights de competitividade.</p>
+      <div class="hack-action">
+        <strong>Avaliação custo-benefício:</strong> Se você está em busca ativa e intensiva, os R$80/mês podem se pagar com um único contato de recrutador que não chegaria de outra forma. O LinkedIn oferece 1 mês grátis para teste. Use o período de teste estrategicamente — ative quando estiver com perfil otimizado e pronto para receber contatos.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9: FUNCIONALIDADES -->
+  <div class="section" id="funcionalidades">
+    <div class="section-tag">Seção 09</div>
+    <h2>Funcionalidades subutilizadas</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">🎯</div>
+        <h4>"Tenho Interesse" (até 50 empresas)</h4>
+        <p>Sinaliza interesse privado — seu perfil aparece nas buscas dos recrutadores dessas empresas no Recruiter. Gratuito. A maioria dos candidatos nem sabe que existe.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">🔔</div>
+        <h4>Alertas por empresa específica</h4>
+        <p>Não apenas por cargo — por empresa. Receba notificação imediata quando iFood, Itaú ou Nubank abrirem vaga. Seja dos primeiros a aplicar.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">✅</div>
+        <h4>Verificação de perfil</h4>
+        <p>Selo gratuito de identidade, local de trabalho ou instituição. Sinal de confiança que poucos ativam.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">📊</div>
+        <h4>SSI Dashboard</h4>
+        <p>Acesse linkedin.com/sales/ssi para ver sua pontuação gratuita. Compare com profissionais do seu setor. Identifique em qual pilar você está fraca.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">📌</div>
+        <h4>Seção "Destaque" (Featured)</h4>
+        <p>Fixe posts, artigos, links ou documentos no topo do perfil. É sua vitrine — e a maioria dos candidatos deixa vazia.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">🔗</div>
+        <h4>URL personalizada</h4>
+        <p>linkedin.com/in/seunome é mais profissional e memorável que linkedin.com/in/jessica-delfino-a7b3c9d2. Edite em "Editar perfil público e URL".</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 10: MITOS -->
+  <div class="section" id="mitos">
+    <div class="section-tag">Seção 10</div>
+    <h2>Mitos vs. Realidade</h2>
+
+    <div class="myth-grid">
+      <div class="myth-item">
+        <div class="myth-side">"Ter muitas conexões é o mais importante"</div>
+        <div class="fact-side">Quantidade de conexões é irrelevante se não são do seu setor-alvo. O que importa é a <strong>qualidade</strong>: conexões com recrutadores, líderes e profissionais da área que você busca. 500 conexões estratégicas > 5.000 aleatórias.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-side">"Open to Work com a faixa verde no perfil é vergonhoso"</div>
+        <div class="fact-side">O modo "Apenas recrutadores" é invisível para sua rede. Só quem tem licença LinkedIn Recruiter vê. O risco de vazamento é muito baixo. E mesmo o modo público não é vergonhoso — é prático para quem já está fora do mercado.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-side">"Basta ter perfil completo e esperar"</div>
+        <div class="fact-side">O algoritmo favorece perfis <strong>ativos</strong>. Publicar, comentar, interagir — tudo isso sinaliza que você está presente. Perfil parado perde visibilidade com o tempo, mesmo que esteja completo.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-side">"Preciso postar todos os dias"</div>
+        <div class="fact-side">Consistência > frequência. 2-3 posts por semana bem feitos valem mais que posts diários genéricos. O algoritmo prioriza <strong>tempo de leitura e salvamentos</strong> sobre volume de curtidas.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-side">"Easy Apply é a melhor forma de se candidatar"</div>
+        <div class="fact-side">Easy Apply é a mais fácil — por isso recebe o maior volume de candidaturas. A concorrência é brutal. Vagas que redirecionam para o site da empresa (mais trabalhosas) costumam ter menos candidatos e taxas de resposta maiores.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-side">"LinkedIn é só para quem está empregado"</div>
+        <div class="fact-side">O LinkedIn é especialmente poderoso para quem está em transição. É o único lugar onde recrutadores buscam candidatos proativamente. Estar fora do mercado e com perfil otimizado pode gerar mais contatos do que estar empregado com perfil desatualizado.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-side">"Preciso do Premium para ter resultados"</div>
+        <div class="fact-side">Todas as funcionalidades críticas (Open to Work, "Tenho Interesse", alertas, SSI, verificação, publicação) são <strong>gratuitas</strong>. O Premium adiciona InMail, insights de candidatura e visibilidade extra — útil, mas não obrigatório.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 11: FILTROS DO RECRUITER -->
+  <div class="section" id="filtros">
+    <div class="section-tag">Seção 11</div>
+    <h2>O que Recrutadores filtram no LinkedIn Recruiter</h2>
+    <p>Os filtros de busca do LinkedIn Recruiter operam com lógica booleana (AND, OR, NOT) e são aplicados nos seguintes campos:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Filtro</th>
+            <th>O que o recrutador digita</th>
+            <th>Onde no seu perfil isso é buscado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cargos</strong></td>
+            <td>"Product Manager" AND "UX" / "Service Designer" OR "UX Researcher"</td>
+            <td>Headline + títulos nas experiências. Se seu título não contém esses termos, você não aparece</td>
+          </tr>
+          <tr>
+            <td><strong>Localidade</strong></td>
+            <td>"São Paulo" / "Grande São Paulo" / "Brasil"</td>
+            <td>Campo de localização do perfil</td>
+          </tr>
+          <tr>
+            <td><strong>Empresas</strong></td>
+            <td>"Mercado Livre" AND "iFood" / NOT "Consultoria"</td>
+            <td>Empresas listadas nas experiências</td>
+          </tr>
+          <tr>
+            <td><strong>Competências</strong></td>
+            <td>"SQL" AND "Jira" / "Product Management" OR "Service Design"</td>
+            <td>Seção de Competências + menções no texto de experiências e resumo</td>
+          </tr>
+          <tr>
+            <td><strong>Instituições de Ensino</strong></td>
+            <td>"Insper" / "USP" / "ESPM"</td>
+            <td>Seção de Formação</td>
+          </tr>
+          <tr>
+            <td><strong>Setores/Indústrias</strong></td>
+            <td>"Tecnologia" / "E-commerce" / "Fintech"</td>
+            <td>Setor definido no perfil + contexto das experiências</td>
+          </tr>
+          <tr>
+            <td><strong>Idiomas</strong></td>
+            <td>"Inglês" AND "Espanhol"</td>
+            <td>Seção de Idiomas</td>
+          </tr>
+          <tr>
+            <td><strong>Palavras-chave</strong></td>
+            <td>"roadmap" AND "métricas" AND "stakeholder"</td>
+            <td>Todo o perfil: headline, resumo, experiências, competências. Keywords são destacadas para o recrutador</td>
+          </tr>
+          <tr>
+            <td><strong>Open to Work</strong></td>
+            <td>Filtro binário: sim/não</td>
+            <td>Configuração Open to Work ativada = badge verde visível para o recrutador</td>
+          </tr>
+          <tr>
+            <td><strong>Anos de experiência</strong></td>
+            <td>"5-10 anos" / "10+ anos"</td>
+            <td>Calculado automaticamente a partir das datas nas experiências</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-danger">
+      <div class="alert-title">⚠️ Implicação direta para transição de carreira</div>
+      <p>Se um recrutador busca "Product Manager" e seu headline diz "UX Researcher", você <strong>não aparece</strong> nessa busca. Ponto. Isso é o filtro mais básico e o mais letal para quem está em transição. Sua headline precisa conter o cargo que você busca, não apenas o cargo que você teve. Se não quer trocar completamente, use formato híbrido: "Service Designer → Product Management | Métricas · Logística · Marketplace".</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 12: CONTEÚDO -->
+  <div class="section" id="conteudo">
+    <div class="section-tag">Seção 12</div>
+    <h2>Estratégia de Conteúdo para Visibilidade</h2>
+    <p>Publicar no LinkedIn não é obrigatório para conseguir emprego, mas é um multiplicador de visibilidade. O algoritmo de feed em 2026 prioriza:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Métrica do Algoritmo</th>
+            <th>O que ganha mais distribuição</th>
+            <th>O que perde distribuição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Profundidade de engajamento</strong></td>
+            <td>Comentários longos e substantivos</td>
+            <td>Muitas curtidas mas nenhum comentário</td>
+          </tr>
+          <tr>
+            <td><strong>Tempo de leitura</strong></td>
+            <td>Posts que as pessoas param para ler até o final</td>
+            <td>Posts curtos que são scrollados rapidamente</td>
+          </tr>
+          <tr>
+            <td><strong>Salvamentos</strong></td>
+            <td>Conteúdo que as pessoas salvam para reler</td>
+            <td>Conteúdo genérico sem valor de referência</td>
+          </tr>
+          <tr>
+            <td><strong>Relevância para a rede</strong></td>
+            <td>Conteúdo sobre o seu setor/especialidade</td>
+            <td>Conteúdo fora do contexto profissional</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>O que publicar (ideias para transição de carreira)</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">💡</div>
+        <h4>Aprendizados de projetos</h4>
+        <p>"O que aprendi conduzindo pesquisa para reduzir custos de CX em marketplace de 50M+ usuários" — demonstra competência sem parecer desesperado.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">🔄</div>
+        <h4>Reflexões sobre transição</h4>
+        <p>"De UX Research para Product Management: por que a pesquisa é a base invisível da priorização" — posiciona a transição como evolução natural.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">📊</div>
+        <h4>Análise de cases do setor</h4>
+        <p>Comentar decisões de produto de empresas que você admira com visão crítica — mostra pensamento de PM sem precisar do título.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--green-bg)">📚</div>
+        <h4>Compartilhar frameworks aplicados</h4>
+        <p>"Como apliquei service blueprint para mapear middle-mile logistics no Mercado Livre" — conteúdo técnico que atrai recrutadores do setor.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="alert-title">💡 Frequência mínima viável</div>
+      <p><strong>2-3 posts por semana</strong> + <strong>5-10 comentários substanciais</strong> em posts de outros. Não precisa ser todo dia. Consistência > volume. 15-30 minutos, 3-4x por semana é suficiente para sair do invisível.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 13: ERROS -->
+  <div class="section" id="erros">
+    <div class="section-tag">Seção 13</div>
+    <h2>Erros fatais que te tornam invisível</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Headline com "Em busca de recolocação"</h4>
+        <p>Nenhum recrutador busca esse termo. Você desperdiça os 220 caracteres mais indexados do seu perfil. Coloque o cargo que busca + especialidades.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Perfil incompleto / sem foto</h4>
+        <p>Perfis sem foto recebem até 9x menos visualizações. Seção "Sobre" vazia = oportunidade perdida de indexação. Experiências sem descrição = keywords inexistentes.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Perfil parado / sem atividade</h4>
+        <p>O algoritmo favorece perfis ativos. Meses sem logar, publicar ou interagir = perda gradual de visibilidade nas buscas.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Competências genéricas</h4>
+        <p>"Trabalho em equipe", "liderança", "comunicação" — nenhum recrutador filtra por esses termos. Eles buscam "SQL", "Jira", "Scrum", "OKRs", "Figma". Coloque termos que aparecem nas vagas.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Não ativar Open to Work</h4>
+        <p>Especialmente no modo privado (apenas recrutadores) — é gratuito, invisível para sua rede, e faz seu perfil subir nas buscas do Recruiter. Não ativar é abrir mão de visibilidade grátis.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Aplicar apenas via Easy Apply</h4>
+        <p>Easy Apply é o canal mais concorrido. Diversifique: candidaturas diretas no site da empresa, contato com recrutadores via mensagem, networking ativo. Easy Apply sozinho é uma armadilha de volume.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Ignorar o "Tenho Interesse"</h4>
+        <p>Funcionalidade gratuita que te coloca no radar de recrutadores das suas empresas-alvo. Pouquíssimos candidatos usam. É vantagem competitiva desperdiçada.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Experiências sem resultados mensuráveis</h4>
+        <p>"Responsável por pesquisas" não diz nada. "Conduzi pesquisa que embasou redução de 17% em custos de CX" diz tudo. O algoritmo e o recrutador precisam de contexto e impacto.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 14: CHECKLIST -->
+  <div class="section" id="checklist">
+    <div class="section-tag">Seção 14</div>
+    <h2>Checklist semanal de manutenção</h2>
+    <p>Rotina para manter o perfil ativo e visível. 30-60 minutos por semana distribuídos:</p>
+
+    <h3>Uma vez (configuração inicial)</h3>
+    <ul class="checklist">
+      <li><strong>Reescrever headline</strong> com cargo-alvo + especialidades + setor</li>
+      <li><strong>Escrever seção "Sobre"</strong> completa em primeira pessoa com keywords estratégicas</li>
+      <li><strong>Detalhar todas as experiências</strong> com contexto, responsabilidades e resultados</li>
+      <li><strong>Preencher 50 competências</strong> relevantes para os cargos que busca</li>
+      <li><strong>Ativar Open to Work</strong> (modo "Apenas recrutadores")</li>
+      <li><strong>Clicar "Tenho Interesse"</strong> em 10-50 empresas-alvo</li>
+      <li><strong>Verificar perfil</strong> (identidade e/ou instituição de ensino)</li>
+      <li><strong>Personalizar URL</strong> (linkedin.com/in/seunome)</li>
+      <li><strong>Pedir 3-5 recomendações</strong> estratégicas</li>
+      <li><strong>Adicionar itens à seção "Destaque"</strong></li>
+    </ul>
+
+    <h3>Semanalmente (manutenção)</h3>
+    <ul class="checklist">
+      <li><strong>Publicar 2-3 posts</strong> sobre sua área (aprendizados, reflexões, cases)</li>
+      <li><strong>Comentar em 5-10 posts</strong> de recrutadores e líderes de empresas-alvo (comentários de 2-4 linhas com substância)</li>
+      <li><strong>Conectar com 3-5 pessoas</strong> estratégicas (recrutadores, PMs, líderes do setor-alvo) com mensagem personalizada</li>
+      <li><strong>Verificar alertas de vagas</strong> e candidatar-se nas primeiras 24-48h</li>
+      <li><strong>Checar SSI</strong> (linkedin.com/sales/ssi) e identificar pilar mais fraco</li>
+    </ul>
+
+    <h3>Mensalmente (revisão)</h3>
+    <ul class="checklist">
+      <li><strong>Revisar headline e "Sobre"</strong> — estão refletindo o cargo que você busca agora?</li>
+      <li><strong>Atualizar competências</strong> se as vagas-alvo mudaram os termos exigidos</li>
+      <li><strong>Adicionar curso/certificação/projeto</strong> recente ao perfil</li>
+      <li><strong>Revisar lista de "Tenho Interesse"</strong> — adicionar novas empresas, remover as irrelevantes</li>
+    </ul>
+  </div>
+
+  <!-- RESUMO -->
+  <div class="section">
+    <div class="section-tag">Resumo Executivo</div>
+    <h2>As 3 Regras de Ouro do LinkedIn</h2>
+
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+      <div class="card" style="border-left: 3px solid var(--linkedin);">
+        <h4>1. Seja encontrável</h4>
+        <p>Headline com cargo-alvo, keywords em todo o perfil, Open to Work ativado, "Tenho Interesse" nas empresas-alvo. O LinkedIn é um mecanismo de busca — se os termos certos não estão no seu perfil, você é invisível.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--linkedin);">
+        <h4>2. Seja ativa</h4>
+        <p>O algoritmo favorece quem interage. Publicar, comentar, conectar — tudo isso sinaliza que você está presente e relevante. Perfil parado perde visibilidade progressivamente.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--linkedin);">
+        <h4>3. Seja específica</h4>
+        <p>Resultados com números, contexto de cada experiência, termos técnicos do setor-alvo. O novo algoritmo interpreta trajetória como narrativa — quanto mais rica e coerente, mais visível você se torna.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Guia Estratégico: Como Dominar o LinkedIn</strong></p>
+    <p>Compilado em Agosto 2026 · Fontes: LinkedIn Help Center, LinkedIn Recruiter docs, Exame, InfoMoney, TechTudo, MIT Technology Review, análises de especialistas em R&S</p>
+    <p style="margin-top:12px;color:var(--linkedin)">Próxima plataforma: InHire</p>
+  </div>
+
+</div>
+</body>
+</html>

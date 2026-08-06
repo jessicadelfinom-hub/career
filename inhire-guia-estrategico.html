@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Estratégico: Como Dominar o InHire</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F1A;
+    --surface: #141929;
+    --surface-2: #1C2236;
+    --surface-3: #242A3D;
+    --border: #2A3150;
+    --text: #E2E6F0;
+    --text-muted: #8B92A8;
+    --accent: #7C3AED;
+    --accent-light: #A78BFA;
+    --green: #00D68F;
+    --green-bg: rgba(0,214,143,0.08);
+    --red: #FF6B6B;
+    --red-bg: rgba(255,107,107,0.08);
+    --yellow: #FECA57;
+    --yellow-bg: rgba(254,202,87,0.08);
+    --blue: #54A0FF;
+    --blue-bg: rgba(84,160,255,0.08);
+    --orange: #FF9F43;
+    --inhire: #7C3AED;
+    --inhire-bg: rgba(124,58,237,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .hero { padding: 80px 0 60px; border-bottom: 1px solid var(--border); text-align: center; }
+  .hero-badge { display: inline-block; background: var(--inhire); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 4px; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 900; line-height: 1.15; margin-bottom: 16px; letter-spacing: -1px; }
+  .hero h1 span { color: var(--accent-light); }
+  .hero p { font-size: 17px; color: var(--text-muted); max-width: 620px; margin: 0 auto; }
+  .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; margin: 40px 0; overflow: hidden; }
+  .stat { background: var(--surface); padding: 24px; text-align: center; }
+  .stat-number { font-size: 28px; font-weight: 800; color: var(--accent-light); font-family: 'JetBrains Mono', monospace; }
+  .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+  .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--inhire); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .section h2 { font-size: clamp(24px, 3.5vw, 32px); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.5px; }
+  .section h3 { font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--text); }
+  .section p { color: var(--text-muted); margin-bottom: 16px; font-size: 15px; }
+  .table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; padding: 14px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(124,58,237,0.04); }
+  td strong { color: var(--text); font-weight: 600; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+  .card-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px; }
+  .card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+  .alert { border-radius: 8px; padding: 20px 24px; margin: 24px 0; border-left: 3px solid; font-size: 14px; line-height: 1.7; }
+  .alert-danger { background: var(--red-bg); border-color: var(--red); }
+  .alert-danger .alert-title { color: var(--red); }
+  .alert-success { background: var(--green-bg); border-color: var(--green); }
+  .alert-success .alert-title { color: var(--green); }
+  .alert-warning { background: var(--yellow-bg); border-color: var(--yellow); }
+  .alert-warning .alert-title { color: var(--yellow); }
+  .alert-info { background: var(--blue-bg); border-color: var(--blue); }
+  .alert-info .alert-title { color: var(--blue); }
+  .alert-inhire { background: var(--inhire-bg); border-color: var(--inhire); }
+  .alert-inhire .alert-title { color: var(--accent-light); }
+  .alert-title { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .alert p { color: var(--text); margin: 0; }
+  .step { display: flex; gap: 20px; margin: 20px 0; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  .step-num { flex-shrink: 0; width: 36px; height: 36px; background: var(--inhire); color: #fff; font-weight: 800; font-size: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; }
+  .step-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .step-content p { font-size: 13px; color: var(--text-muted); margin: 0; }
+  .step-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 3px; margin-top: 8px; }
+  .tag-critical { background: var(--red-bg); color: var(--red); }
+  .tag-important { background: var(--yellow-bg); color: var(--yellow); }
+  .tag-tip { background: var(--green-bg); color: var(--green); }
+  .hack { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin: 16px 0; }
+  .hack-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .hack-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-bg); padding: 4px 10px; border-radius: 4px; white-space: nowrap; }
+  .hack h4 { font-size: 16px; font-weight: 700; }
+  .hack p { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
+  .hack-action { background: var(--surface-3); border-radius: 6px; padding: 14px 18px; font-size: 13px; color: var(--text); border-left: 2px solid var(--inhire); }
+  .hack-action strong { color: var(--accent-light); }
+  .flow { display: flex; flex-direction: column; gap: 4px; margin: 24px 0; }
+  .flow-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  .flow-arrow { text-align: center; color: var(--text-muted); font-size: 18px; padding: 0 0 0 18px; }
+  .flow-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--inhire); font-weight: 600; flex-shrink: 0; width: 80px; }
+  .flow-text { font-size: 14px; color: var(--text); }
+  .flow-text small { display: block; color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 40px 0; }
+  .toc h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 16px; }
+  .toc ol { list-style: none; counter-reset: toc-counter; }
+  .toc li { counter-increment: toc-counter; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .toc li:last-child { border-bottom: none; }
+  .toc li::before { content: counter(toc-counter, decimal-leading-zero); font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--inhire); margin-right: 12px; font-size: 12px; }
+  .toc a { color: var(--text); text-decoration: none; }
+  .toc a:hover { color: var(--accent-light); }
+  .fit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+  .fit-card { border-radius: 8px; padding: 20px; text-align: center; }
+  .fit-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+  .fit-card p { font-size: 12px; margin: 0; }
+  .fit-low { background: var(--red-bg); color: var(--red); }
+  .fit-mid { background: var(--yellow-bg); color: var(--yellow); }
+  .fit-high { background: var(--green-bg); color: var(--green); }
+  .checklist { list-style: none; margin: 20px 0; }
+  .checklist li { padding: 12px 16px 12px 44px; position: relative; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: ''; position: absolute; left: 16px; top: 14px; width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 3px; }
+  .checklist li strong { color: var(--text); }
+  .compare-box { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 24px 0; }
+  .compare-col { background: var(--surface); padding: 20px; }
+  .compare-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .compare-col p { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; }
+  .footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 12px; }
+  .footer p { margin-bottom: 4px; }
+  @media (max-width: 640px) {
+    .step { flex-direction: column; gap: 12px; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 48px 0 40px; }
+    .section { padding: 40px 0; }
+    .fit-grid { grid-template-columns: 1fr; }
+    .compare-box { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: #fff; color: #111; }
+    .alert, .card, .hack, .step { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Inteligência de Processo Seletivo</div>
+    <h1>Guia Estratégico:<br><span>Como Dominar o InHire</span></h1>
+    <p>O ATS que nasceu de uma consultoria de recrutamento tech. Menor que a Gupy, mais focado em empresas de tecnologia e scale-ups — e com uma IA de triagem que classifica em Alto, Médio e Baixo fit.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">900+</div>
+      <div class="stat-label">Empresas clientes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Níveis de Fit (IA)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Job boards integrados</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">Intera</div>
+      <div class="stat-label">Origem (consultoria tech)</div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#oque">O que é o InHire (e como difere da Gupy)</a></li>
+      <li><a href="#candidato">Como funciona para o Candidato</a></li>
+      <li><a href="#recrutador">Como funciona para o Recrutador</a></li>
+      <li><a href="#ia">A IA de Triagem: Alto, Médio e Baixo Fit</a></li>
+      <li><a href="#filtros">Filtros que o recrutador usa para te encontrar</a></li>
+      <li><a href="#hacks">Hacks e estratégias que funcionam</a></li>
+      <li><a href="#comparativo">Comparativo: InHire vs. Gupy vs. LinkedIn</a></li>
+      <li><a href="#erros">Erros que te classificam como Baixo Fit</a></li>
+      <li><a href="#checklist">Checklist antes de cada candidatura</a></li>
+    </ol>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section" id="oque">
+    <div class="section-tag">Seção 01</div>
+    <h2>O que é o InHire (e como difere da Gupy)</h2>
+
+    <p>O InHire é um ATS (Applicant Tracking System) brasileiro, criado como spin-off da <strong>Intera</strong> — uma das principais consultorias de recrutamento tech do Brasil. Após 5+ anos recrutando para empresas como Itaú, Ambev e Grupo Boticário, e mais de 500 mil abordagens no LinkedIn, a Intera construiu o InHire a partir da dor real de quem recruta.</p>
+
+    <p>Atende mais de 900 empresas no Brasil, com presença forte em <strong>startups, scale-ups e empresas de tecnologia</strong>. Recebeu rodada de investimento liderada pelo DGF com participação da Endeavor Scale-Up Ventures para expandir no mercado Enterprise.</p>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ A diferença crucial para o candidato</div>
+      <p>O InHire <strong>não tem um portal centralizado de vagas</strong> como a Gupy (portal.gupy.io). As vagas publicadas são das empresas que usam a plataforma, e os candidatos encontram as vagas na <strong>página de carreiras de cada empresa</strong>. Ou seja: você não busca vagas "no InHire" — você encontra vagas em sites de empresas que usam InHire como backend. É frequente também que as vagas apareçam via job boards integrados (LinkedIn, Indeed, Catho, Infojobs).</p>
+    </div>
+
+    <h3>Origem e DNA</h3>
+    <p>Diferente da Gupy (que nasceu como produto de software), o InHire nasceu de quem recruta ativamente. A Intera faz hunting — busca ativa de candidatos, principalmente em tech. Isso significa que o InHire é fortemente otimizado para:</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--inhire-bg)">🎯</div>
+        <h4>Hunting ativo</h4>
+        <p>Extensão de Chrome para LinkedIn que permite ao recrutador adicionar candidatos diretamente ao funil InHire, sem que o candidato precise se candidatar. Seu perfil no LinkedIn pode ser "puxado" para dentro da plataforma.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--inhire-bg)">📱</div>
+        <h4>Candidatura via WhatsApp</h4>
+        <p>Candidatos podem se inscrever por WhatsApp — via texto ou foto do currículo. Sem formulário interminável. Voltado para vagas operacionais e de alto volume.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--inhire-bg)">🏢</div>
+        <h4>Banco de Talentos por empresa</h4>
+        <p>Cada empresa constrói sua própria base de candidatos. Quem se candidatou a uma vaga fica no banco e pode ser convidado para vagas futuras, sem precisar se inscrever novamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: CANDIDATO -->
+  <div class="section" id="candidato">
+    <div class="section-tag">Seção 02</div>
+    <h2>Como funciona para o Candidato</h2>
+    <p>A experiência do candidato no InHire é mais simples e rápida que na Gupy — a proposta é inscrição em menos de 3 minutos, sem criar login obrigatório em alguns casos.</p>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Encontrar a vaga</h4>
+        <p>Você encontra vagas InHire por vários caminhos: página de carreiras da empresa (ex: empresa.inhire.com.br), LinkedIn (via integração), Indeed, Catho, Infojobs, ou link direto compartilhado por recrutador/indicação. Não existe um "portal de vagas InHire" centralizado.</p>
+        <span class="step-tag tag-important">Diferença da Gupy</span>
+        <p style="margin-top:8px;">Na Gupy, todas as vagas ficam em portal.gupy.io. No InHire, cada empresa tem sua própria página. Isso significa que você precisa ir até o site de carreiras de cada empresa ou encontrar as vagas em job boards.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Preencher o formulário de inscrição</h4>
+        <p>Formulário customizável por empresa. Campos padrão incluem: nome, e-mail, telefone, upload de currículo. Campos opcionais/configuráveis: LinkedIn (pode ser obrigatório), pretensão salarial (pode ser obrigatória), formulário de diversidade, perguntas customizadas via Typeform. A inscrição não exige criação de conta em muitos casos.</p>
+        <span class="step-tag tag-critical">Atenção à pretensão salarial</span>
+        <p style="margin-top:8px;">A pretensão salarial pode ser usada como critério de triagem automática pela IA. Se sua pretensão estiver muito acima da faixa definida pelo recrutador, você pode ser classificado automaticamente como "Baixo fit" — antes de qualquer análise do currículo.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Receber confirmação por e-mail</h4>
+        <p>Após inscrição, você recebe e-mail confirmando participação no processo seletivo. Todo o contato subsequente é por e-mail ou telefone diretamente com o recrutador da empresa.</p>
+        <span class="step-tag tag-tip">Fique atento</span>
+        <p style="margin-top:8px;">Mantenha dados de contato corretos — é por eles que o recrutador vai te avisar sobre as etapas. Se o telefone ou e-mail estiver errado, você some do processo.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Etapas do processo</h4>
+        <p>Variam por empresa: triagem de currículo (IA + humano), testes técnicos, entrevistas (que podem ser gravadas e transcritas pela IA), painel em grupo, entrevista com gestores, carta oferta. O recrutador movimenta você pelo funil visual — etapas customizadas por empresa.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="alert-title">💡 Candidatura via WhatsApp</div>
+      <p>Em algumas vagas (especialmente operacionais), é possível se inscrever via WhatsApp — enviando texto ou até <strong>foto do currículo</strong>. A IA processa o conteúdo sem fricção. Esse canal é crescente no InHire e reflete o DNA de "reduzir barreiras de inscrição". Para vagas corporativas/tech, o formulário web é o padrão.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: RECRUTADOR -->
+  <div class="section" id="recrutador">
+    <div class="section-tag">Seção 03</div>
+    <h2>Como funciona para o Recrutador</h2>
+
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-label">PASSO 1</div>
+        <div class="flow-text">
+          <strong>Requisição e abertura de vaga</strong>
+          <small>Gestores fazem a requisição. Aprovadores (dentro ou fora do InHire) aprovam por e-mail. Após aprovação, o recrutador cria a vaga com descrição, requisitos, faixa salarial, tipo de contrato e critérios de triagem.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 2</div>
+        <div class="flow-text">
+          <strong>Publicação multicanal (multiposting)</strong>
+          <small>A vaga é cadastrada uma vez e publicada em 15+ job boards simultaneamente: LinkedIn, Indeed, Catho, Infojobs, Glassdoor, página de carreiras da empresa, WhatsApp, programa de indicação. Tudo rastreado por fonte de origem.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 3</div>
+        <div class="flow-text">
+          <strong>Hunting ativo (busca proativa)</strong>
+          <small>Além de esperar candidaturas, o recrutador usa extensão de Chrome para LinkedIn para buscar e adicionar candidatos ao funil InHire com um clique. Vê histórico, off-limits e gestão de abordagens direto da extensão. Também busca no Banco de Talentos (candidatos de vagas anteriores).</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 4</div>
+        <div class="flow-text">
+          <strong>Triagem com IA (Agente de Triagem)</strong>
+          <small>O recrutador define critérios de avaliação (por importância: Essencial, Importante, ou menor peso). A IA classifica cada candidato em Alto, Médio ou Baixo fit com base no currículo, pretensão salarial e respostas do formulário. O recrutador revisa e decide.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 5</div>
+        <div class="flow-text">
+          <strong>Filtros manuais adicionais</strong>
+          <small>O recrutador filtra por: fit (Alto/Médio/Baixo), tags, etapa da vaga, última empresa, último cargo, visualizados/não visualizados, palavras-chave no currículo. Pode buscar candidatos no Banco de Talentos por texto livre usando IA (Busca Inteligente).</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 6</div>
+        <div class="flow-text">
+          <strong>Entrevistas estruturadas com IA</strong>
+          <small>Entrevistas podem ser gravadas e transcritas pela IA. O recrutador busca trechos por palavra-chave, faz perguntas à IA sobre a entrevista e gera pareceres. Scorecards padronizados garantem avaliação consistente.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-label">PASSO 7</div>
+        <div class="flow-text">
+          <strong>Carta oferta e contratação</strong>
+          <small>Proposta enviada via integração com Clicksign (assinatura digital). Fluxo de aprovação interno. Dados migram para o departamento pessoal.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-inhire">
+      <div class="alert-title">🔎 O que isso significa para você</div>
+      <p>No InHire, você pode ser encontrada de <strong>duas formas</strong>: (1) candidatura ativa na página de carreiras ou via job board, e (2) <strong>hunting passivo</strong> — o recrutador te encontra no LinkedIn via extensão de Chrome e te adiciona ao funil sem você saber. Isso reforça que seu perfil do LinkedIn precisa estar impecável — ele é a "porta de entrada" mesmo para vagas no InHire.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: IA -->
+  <div class="section" id="ia">
+    <div class="section-tag">Seção 04</div>
+    <h2>A IA de Triagem: Alto, Médio e Baixo Fit</h2>
+
+    <p>O InHire usa "Agentes de IA" para triagem. Diferente da Gupy (que gera score de 0-100), o InHire classifica em três faixas:</p>
+
+    <div class="fit-grid">
+      <div class="fit-card fit-low">
+        <h4>🔴 Baixo Fit</h4>
+        <p>Menor alinhamento com os critérios. Recrutador provavelmente não abrirá seu currículo.</p>
+      </div>
+      <div class="fit-card fit-mid">
+        <h4>🟡 Médio Fit</h4>
+        <p>Atende parcialmente. Pode ser revisado se o volume de "Alto" for baixo.</p>
+      </div>
+      <div class="fit-card fit-high">
+        <h4>🟢 Alto Fit</h4>
+        <p>Altamente alinhado. Prioridade na análise humana. É aqui que você precisa estar.</p>
+      </div>
+    </div>
+
+    <h3>Como o Agente de Triagem classifica</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Critério avaliado</th>
+            <th>Como funciona</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Critérios do currículo</strong></td>
+            <td>A IA compara o conteúdo do currículo com os critérios definidos pelo recrutador. Cada critério tem nível de importância: <strong>Essencial</strong> (peso alto, obrigatório) ou <strong>Importante</strong> (peso médio, influencia mas não é eliminatório)</td>
+            <td><strong style="color:var(--green)">ALTO</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Pretensão salarial</strong></td>
+            <td>A faixa salarial da vaga é definida pelo recrutador. Se sua pretensão estiver acima ou abaixo dos limites configurados, pode ser automaticamente classificado como "Baixo fit". O recrutador pode ativar ou desativar esse filtro automático.</td>
+            <td><strong style="color:var(--yellow)">VARIÁVEL</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Respostas do formulário</strong></td>
+            <td>Respostas a perguntas customizadas (formulário Typeform ou perguntas da vaga) são analisadas junto com o currículo</td>
+            <td><strong style="color:var(--yellow)">VARIÁVEL</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Tipo de contratação</strong></td>
+            <td>CLT, PJ, estágio — o recrutador define o tipo esperado. Incompatibilidade pode afetar o fit</td>
+            <td><strong style="color:var(--yellow)">VARIÁVEL</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-danger">
+      <div class="alert-title">⚠️ Diferença crucial: critérios são por vaga</div>
+      <p>Na Gupy, a IA compara seu perfil com a descrição da vaga de forma automática. No InHire, <strong>o recrutador define manualmente os critérios</strong> e atribui peso (Essencial vs. Importante). Isso significa que dois recrutadores para vagas similares podem ter critérios completamente diferentes. Você não tem como saber exatamente quais critérios foram definidos — mas pode inferir a partir da descrição da vaga.</p>
+    </div>
+
+    <h3>O que a IA analisa vs. o que o humano analisa</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>IA analisa</th>
+            <th>Humano analisa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Currículo (texto) vs. critérios definidos</td>
+            <td>Respostas dissertativas / ensaios</td>
+          </tr>
+          <tr>
+            <td>Pretensão salarial vs. faixa da vaga</td>
+            <td>Transcrição de entrevistas</td>
+          </tr>
+          <tr>
+            <td>Respostas objetivas do formulário</td>
+            <td>Fit cultural e soft skills</td>
+          </tr>
+          <tr>
+            <td>Keywords do currículo vs. requisitos</td>
+            <td>Coerência narrativa e motivação</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-success">
+      <div class="alert-title">✓ Transparência do InHire</div>
+      <p>O InHire mostra ao recrutador <strong>tags explicativas</strong> sobre cada classificação, com transparência sobre por que aquele candidato foi classificado como Alto, Médio ou Baixo fit. Isso é positivo: a decisão da IA é auditável pelo recrutador, o que reduz falsos negativos. Mas o candidato não vê essa classificação.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: FILTROS -->
+  <div class="section" id="filtros">
+    <div class="section-tag">Seção 05</div>
+    <h2>Filtros que o Recrutador usa para te encontrar</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Filtro</th>
+            <th>Como funciona</th>
+            <th>Implicação para você</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fit do currículo</strong></td>
+            <td>Filtra por Alto, Médio ou Baixo fit</td>
+            <td>Se você caiu no "Baixo fit", o recrutador provavelmente nunca verá seu currículo. O filtro padrão é começar pelos "Alto fit"</td>
+          </tr>
+          <tr>
+            <td><strong>Tags</strong></td>
+            <td>Etiquetas personalizadas por vaga aplicadas pelo recrutador</td>
+            <td>Tags são internas — você não controla. Mas recrutadores usam para categorizar candidatos (ex: "tech", "sênior", "referência")</td>
+          </tr>
+          <tr>
+            <td><strong>Etapa da vaga</strong></td>
+            <td>Em qual etapa do funil o candidato está</td>
+            <td>Usado para gestão interna — não impacta sua candidatura inicial</td>
+          </tr>
+          <tr>
+            <td><strong>Última empresa</strong></td>
+            <td>Extrai do currículo via IA a última empresa listada</td>
+            <td>Se sua última empresa é relevante para o setor (ex: Mercado Livre para marketplace), isso pode te favorecer</td>
+          </tr>
+          <tr>
+            <td><strong>Último cargo</strong></td>
+            <td>Extrai do currículo via IA o último cargo listado</td>
+            <td>Mesmo problema da Gupy: se seu último cargo é "UX Researcher" e a vaga é "PM", o filtro pode te excluir</td>
+          </tr>
+          <tr>
+            <td><strong>Visualizados/Não visualizados</strong></td>
+            <td>Filtra candidatos que o recrutador já abriu ou ainda não</td>
+            <td>Usado para gestão — não impacta ranking</td>
+          </tr>
+          <tr>
+            <td><strong>Palavras-chave no currículo</strong></td>
+            <td>Busca de texto livre dentro dos currículos</td>
+            <td>Se o recrutador busca "roadmap" e a palavra não está no seu CV, você não aparece</td>
+          </tr>
+          <tr>
+            <td><strong>Busca Inteligente (IA)</strong></td>
+            <td>O recrutador escreve uma frase em linguagem natural e a IA retorna candidatos já filtrados e contextualizados</td>
+            <td>Exemplo: "candidato com experiência em logística e métricas de produto" — a IA interpreta e busca</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-inhire">
+      <div class="alert-title">🔎 Busca Inteligente: o filtro mais poderoso</div>
+      <p>O InHire permite que o recrutador escreva uma necessidade em frase simples e a IA retorna candidatos já filtrados, contextualizados e prontos para avaliação. Isso é mais sofisticado que a busca booleana do LinkedIn — interpreta contexto, não apenas keywords isoladas. Para você, significa que seu currículo precisa ter <strong>contexto rico</strong>, não apenas listas de skills.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6: HACKS -->
+  <div class="section" id="hacks">
+    <div class="section-tag">Seção 06</div>
+    <h2>Hacks e Estratégias que funcionam</h2>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>1. Currículo com contexto narrativo, não apenas keywords</h4>
+      </div>
+      <p>A IA do InHire interpreta contexto, não apenas faz matching de palavras. Diferente da Gupy (que faz matching textual mais rígido), o InHire usa IA que entende frases como "candidato com experiência em logística e métricas de produto". Isso significa que descrições ricas e contextualizadas performam melhor que listas de palavras-chave.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Nas experiências do currículo, escreva parágrafos curtos com contexto: "Conduzi pesquisa com usuários em operação de marketplace LATAM com 50M+ usuários, gerando evidências que embasaram redução de 17% nos custos de contato CX e priorização de roadmap de produto." — isso alimenta tanto a IA quanto o recrutador humano.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>2. Pretensão salarial estratégica</h4>
+      </div>
+      <p>No InHire, a pretensão salarial pode ser filtro automático. Se a empresa definiu faixa de R$12-15k e você colocou R$20k, pode ser classificado como "Baixo fit" antes mesmo do currículo ser lido. Se o campo não for obrigatório, há debate sobre preencher ou não.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Se o campo for obrigatório, pesquise a faixa de mercado para o cargo e localização antes de preencher. Use sites como Glassdoor, Levels.fyi, ou pesquise na vaga se há alguma indicação. Se não souber, coloque uma faixa realista para o mercado — melhor pecar por um valor alinhado e negociar depois do que ser eliminada automaticamente por pretensão fora da faixa.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>3. LinkedIn impecável (hunting ativo)</h4>
+      </div>
+      <p>O InHire tem extensão de Chrome para LinkedIn que permite ao recrutador te adicionar ao funil com um clique. Isso significa que mesmo sem se candidatar a uma vaga InHire, você pode ser "puxada" para dentro de um processo seletivo. Seu LinkedIn é, na prática, seu segundo currículo — e pode ser o primeiro que o recrutador vê.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Tudo que está no guia de LinkedIn se aplica aqui com força dobrada. Headline com cargo-alvo, experiências detalhadas, Open to Work ativado. Se o recrutador te encontra no LinkedIn via extensão InHire, ele já vê seu histórico no InHire (se você se candidatou a vagas dessa empresa antes), off-limits e dados salvos.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO ALTO</span>
+        <h4>4. Espelhar os requisitos "Essenciais" da descrição da vaga</h4>
+      </div>
+      <p>O recrutador define critérios como "Essencial" (obrigatório) ou "Importante" (desejável). Você não sabe quais são, mas a descrição da vaga geralmente lista "requisitos" e "diferenciais" — que correspondem a esses pesos. Se um requisito listado como essencial não aparece no seu currículo, a IA tende a te classificar como Baixo fit.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Leia a descrição da vaga com atenção cirúrgica. Separe mentalmente "requisitos" (provavelmente Essenciais) de "diferenciais" (provavelmente Importantes). Garanta que TODOS os requisitos que você atende estejam explicitamente mencionados no currículo, com os mesmos termos.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO MÉDIO</span>
+        <h4>5. Incluir LinkedIn no formulário</h4>
+      </div>
+      <p>O InHire pode solicitar o link do LinkedIn como campo (obrigatório ou opcional). Quando preenchido, o recrutador pode abrir seu perfil direto da plataforma. Se o campo existe, preenchê-lo conecta seu perfil social ao processo — e dá ao recrutador mais contexto.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Sempre preencha o campo LinkedIn quando disponível. Garanta que a URL é a personalizada (linkedin.com/in/seunome) e que o perfil está atualizado e coerente com o CV enviado.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO MÉDIO</span>
+        <h4>6. Banco de Talentos: candidaturas passadas contam</h4>
+      </div>
+      <p>No InHire, todos os candidatos que se inscreveram em vagas da empresa ficam no Banco de Talentos. Recrutadores podem buscar nesse banco para vagas futuras — e convidar candidatos anteriores sem nova inscrição. Seu perfil de candidatura passada permanece acessível.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Se você se candidatou a uma vaga numa empresa que usa InHire e não foi selecionada, não descarte a empresa. Seu currículo está no banco. Se a empresa abrir uma vaga mais alinhada no futuro, o recrutador pode te encontrar pela Busca Inteligente. Mas atenção: se seus dados estão desatualizados, considere se candidatar novamente com informações atuais.
+      </div>
+    </div>
+
+    <div class="hack">
+      <div class="hack-header">
+        <span class="hack-badge">IMPACTO MÉDIO</span>
+        <h4>7. Programa de Indicação</h4>
+      </div>
+      <p>O InHire tem funcionalidade de programa de indicação integrada. Funcionários da empresa podem indicar candidatos através de uma dashboard centralizada. Candidatos indicados geralmente recebem atenção especial no processo.</p>
+      <div class="hack-action">
+        <strong>Ação:</strong> Se você tem contato com alguém que trabalha numa empresa que usa InHire, pergunte se existe programa de indicação ativo. Uma indicação interna pode fazer seu currículo chegar diretamente ao recrutador, fora do ranking da IA — como em qualquer ATS.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7: COMPARATIVO -->
+  <div class="section" id="comparativo">
+    <div class="section-tag">Seção 07</div>
+    <h2>Comparativo: InHire vs. Gupy vs. LinkedIn</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th>InHire</th>
+            <th>Gupy</th>
+            <th>LinkedIn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tipo</strong></td>
+            <td>ATS com hunting ativo</td>
+            <td>ATS puro</td>
+            <td>Rede social + busca + vagas</td>
+          </tr>
+          <tr>
+            <td><strong>Nº de empresas</strong></td>
+            <td>900+</td>
+            <td>4.000+</td>
+            <td>Milhões globais</td>
+          </tr>
+          <tr>
+            <td><strong>Portal centralizado</strong></td>
+            <td>❌ Não (vagas nas páginas das empresas)</td>
+            <td>✅ Sim (portal.gupy.io)</td>
+            <td>✅ Sim (aba Vagas)</td>
+          </tr>
+          <tr>
+            <td><strong>IA de triagem</strong></td>
+            <td>Alto / Médio / Baixo fit (critérios definidos pelo RH)</td>
+            <td>Score 0-100 (Gaia, NLP)</td>
+            <td>Matching por algoritmo + LLMs</td>
+          </tr>
+          <tr>
+            <td><strong>Hunting ativo</strong></td>
+            <td>✅ Extensão Chrome p/ LinkedIn</td>
+            <td>❌ Não foca em hunting</td>
+            <td>✅ LinkedIn Recruiter</td>
+          </tr>
+          <tr>
+            <td><strong>Candidatura via WhatsApp</strong></td>
+            <td>✅ Sim (texto ou foto de CV)</td>
+            <td>❌ Não</td>
+            <td>❌ Não</td>
+          </tr>
+          <tr>
+            <td><strong>Pretensão salarial</strong></td>
+            <td>Pode ser filtro automático da IA</td>
+            <td>Pode ser pergunta (não filtra IA)</td>
+            <td>Não solicitada na candidatura</td>
+          </tr>
+          <tr>
+            <td><strong>Personalização por vaga</strong></td>
+            <td>Formulário inteiro é customizável por empresa/vaga</td>
+            <td>Apenas "Apresente-se" editável por vaga</td>
+            <td>Perfil é o mesmo para tudo</td>
+          </tr>
+          <tr>
+            <td><strong>Banco de Talentos</strong></td>
+            <td>✅ Por empresa (candidatos reaproveitáveis)</td>
+            <td>✅ Global (Gaia recomenda automaticamente)</td>
+            <td>✅ Implícito (perfil público)</td>
+          </tr>
+          <tr>
+            <td><strong>Formato ideal do CV</strong></td>
+            <td>Texto rico com contexto narrativo</td>
+            <td>Coluna única, keywords, .docx</td>
+            <td>Perfil completo = CV</td>
+          </tr>
+          <tr>
+            <td><strong>DNA / Perfil de empresa</strong></td>
+            <td>Startups, scale-ups, tech</td>
+            <td>Grandes e médias corporações</td>
+            <td>Todas (global)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-success">
+      <div class="alert-title">✓ Implicação estratégica</div>
+      <p>As três plataformas se complementam. A Gupy domina grandes corporações brasileiras. O InHire é mais forte em startups e tech. O LinkedIn é o canal transversal (seu perfil alimenta tanto a Gupy quanto o InHire). A estratégia ideal é: <strong>LinkedIn impecável</strong> (alimenta hunting em ambos ATSs) + <strong>CV adaptado</strong> para cada candidatura (Gupy = keywords; InHire = contexto narrativo) + <strong>candidatura ativa</strong> nos três canais.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 8: ERROS -->
+  <div class="section" id="erros">
+    <div class="section-tag">Seção 08</div>
+    <h2>Erros que te classificam como Baixo Fit</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Pretensão salarial fora da faixa</h4>
+        <p>Se sua pretensão está muito acima ou abaixo da faixa definida pelo recrutador, a IA pode te classificar automaticamente como "Baixo fit" — antes de ler qualquer linha do seu currículo. Pesquise a faixa antes de preencher.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Currículo sem os requisitos "Essenciais"</h4>
+        <p>Se a vaga lista como requisito "experiência com métricas de produto" e isso não aparece no seu CV, a IA pode te classificar como Baixo fit. Critérios "Essenciais" têm peso alto e são praticamente obrigatórios.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Descrições vagas sem contexto</h4>
+        <p>A Busca Inteligente do InHire interpreta contexto. "Responsável por pesquisas" é vago demais para a IA contextualizar. Precisa de quem, o quê, onde, com qual resultado.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Dados de contato incorretos</h4>
+        <p>No InHire, o contato após candidatura é por e-mail e telefone diretamente. Se estão errados, você simplesmente desaparece do processo. Não há painel de acompanhamento robusto como na Gupy.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>LinkedIn desatualizado</h4>
+        <p>O recrutador do InHire pode te encontrar via extensão Chrome do LinkedIn e te adicionar ao funil. Se seu LinkedIn contradiz o CV ou está incompleto, você perde credibilidade antes da entrevista.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--red-bg)">🚫</div>
+        <h4>Não preencher campo LinkedIn quando disponível</h4>
+        <p>Se o formulário pede LinkedIn e você deixa vazio, o recrutador perde uma fonte de contexto. Perfis sem LinkedIn podem parecer menos completos na análise manual.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9: CHECKLIST -->
+  <div class="section" id="checklist">
+    <div class="section-tag">Seção 09</div>
+    <h2>Checklist antes de cada Candidatura no InHire</h2>
+
+    <ul class="checklist">
+      <li><strong>Ler a descrição da vaga inteira</strong> — separar mentalmente "requisitos" (Essenciais) de "diferenciais" (Importantes)</li>
+      <li><strong>Verificar se seu currículo menciona todos os requisitos</strong> que você realmente atende — com os mesmos termos da vaga</li>
+      <li><strong>Pesquisar faixa salarial</strong> para o cargo/localização antes de preencher pretensão (se o campo existir)</li>
+      <li><strong>Preencher campo LinkedIn</strong> quando disponível — com URL personalizada e perfil atualizado</li>
+      <li><strong>Verificar dados de contato</strong> — e-mail e telefone corretos (é o canal principal de comunicação)</li>
+      <li><strong>Garantir que o CV tem contexto narrativo</strong> — não apenas listas de keywords, mas descrições ricas com escala, resultado e metodologia</li>
+      <li><strong>Verificar se LinkedIn e CV contam a mesma história</strong> — incoerências entre os dois geram desconfiança</li>
+      <li><strong>Responder formulários customizados com atenção</strong> — respostas via Typeform são analisadas pelo recrutador humano</li>
+      <li><strong>Verificar se a empresa tem programa de indicação</strong> — se conhece alguém lá, use esse canal</li>
+    </ul>
+  </div>
+
+  <!-- RESUMO -->
+  <div class="section">
+    <div class="section-tag">Resumo Executivo</div>
+    <h2>As 3 Regras de Ouro do InHire</h2>
+
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+      <div class="card" style="border-left: 3px solid var(--inhire);">
+        <h4>1. Contexto narrativo > Keywords soltas</h4>
+        <p>A IA do InHire interpreta contexto, não apenas faz matching textual. Currículo com descrições ricas (quem, o quê, onde, resultado) performa melhor que lista de skills genéricas.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--inhire);">
+        <h4>2. Pretensão salarial é filtro automático</h4>
+        <p>Diferente da Gupy, no InHire a pretensão salarial pode te eliminar antes da análise de currículo. Pesquise a faixa de mercado antes de preencher.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--inhire);">
+        <h4>3. LinkedIn é a porta de entrada</h4>
+        <p>A extensão de hunting do InHire opera via LinkedIn. Seu perfil LinkedIn pode te colocar dentro de um processo seletivo InHire sem que você saiba. Mantenha-o impecável.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-inhire" style="margin-top: 24px;">
+      <div class="alert-title">Princípio central do InHire</div>
+      <p>O InHire é um ATS <strong>centrado no recrutador</strong>, não no candidato. Não há portal para você navegar, não há score visível, não há painel robusto de acompanhamento. Seu poder como candidata está em: (1) ter um currículo que a IA classifique como "Alto fit", (2) ter um LinkedIn que o recrutador encontre via hunting, e (3) ter contatos internos que ativem o programa de indicação.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Guia Estratégico: Como Dominar o InHire</strong></p>
+    <p>Compilado em Agosto 2026 · Fontes: InHire (site oficial, central de ajuda, API docs), Exame, Capterra, LinkedIn InHire, documentação Help Center</p>
+    <p style="margin-top:12px;color:var(--inhire)">Série completa: Gupy · LinkedIn · InHire ✓</p>
+  </div>
+
+</div>
+</body>
+</html>

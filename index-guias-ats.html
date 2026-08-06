@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inteligência ATS — Guias Estratégicos de Processo Seletivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F1A;
+    --surface: #141929;
+    --surface-2: #1C2236;
+    --surface-3: #242A3D;
+    --border: #2A3150;
+    --text: #E2E6F0;
+    --text-muted: #8B92A8;
+    --text-dim: #5A6178;
+    --gupy: #6C5CE7;
+    --gupy-light: #A29BFE;
+    --gupy-bg: rgba(108,92,231,.1);
+    --linkedin: #0A66C2;
+    --linkedin-light: #70B5F9;
+    --linkedin-bg: rgba(10,102,194,.1);
+    --inhire: #7C3AED;
+    --inhire-light: #A78BFA;
+    --inhire-bg: rgba(124,58,237,.1);
+    --gh: #24B47E;
+    --gh-light: #6EE7B7;
+    --gh-bg: rgba(36,180,126,.1);
+    --green: #00D68F;
+    --green-bg: rgba(0,214,143,.08);
+    --red: #FF6B6B;
+    --yellow: #FECA57;
+    --yellow-bg: rgba(254,202,87,.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 48px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--gupy-light), var(--linkedin-light), var(--inhire-light), var(--gh-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 620px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 40px 0;
+  }
+
+  .platform-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s, transform .15s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+  }
+
+  .platform-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .platform-card.gupy:hover { border-color: var(--gupy); }
+  .platform-card.linkedin:hover { border-color: var(--linkedin); }
+  .platform-card.inhire:hover { border-color: var(--inhire); }
+  .platform-card.greenhouse:hover { border-color: var(--gh); }
+
+  .card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .gupy .card-accent { background: var(--gupy); }
+  .linkedin .card-accent { background: var(--linkedin); }
+  .inhire .card-accent { background: var(--inhire); }
+  .greenhouse .card-accent { background: var(--gh); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .gupy .card-icon { background: var(--gupy-bg); }
+  .linkedin .card-icon { background: var(--linkedin-bg); }
+  .inhire .card-icon { background: var(--inhire-bg); }
+  .greenhouse .card-icon { background: var(--gh-bg); }
+
+  .card-title-group h2 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -.3px;
+    margin-bottom: 2px;
+  }
+
+  .gupy .card-title-group h2 { color: var(--gupy-light); }
+  .linkedin .card-title-group h2 { color: var(--linkedin-light); }
+  .inhire .card-title-group h2 { color: var(--inhire-light); }
+  .greenhouse .card-title-group h2 { color: var(--gh-light); }
+
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .5px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .meta-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface-3);
+    color: var(--text-muted);
+    letter-spacing: .3px;
+  }
+
+  .card-highlights {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .highlight {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .highlight strong {
+    color: var(--text);
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 2px;
+  }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 20px;
+    letter-spacing: .3px;
+  }
+
+  .gupy .card-cta { color: var(--gupy-light); }
+  .linkedin .card-cta { color: var(--linkedin-light); }
+  .inhire .card-cta { color: var(--inhire-light); }
+  .greenhouse .card-cta { color: var(--gh-light); }
+
+  .card-cta::after { content: '→'; font-size: 16px; }
+
+  /* COMPARATIVO */
+  .compare-section {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .compare-section h2 {
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -.5px;
+  }
+
+  .compare-section > p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .compare-table {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .compare-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .compare-table thead th {
+    background: var(--surface-2);
+    color: var(--text);
+    font-weight: 700;
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .compare-table thead th:nth-child(2) { color: var(--gupy-light); }
+  .compare-table thead th:nth-child(3) { color: var(--linkedin-light); }
+  .compare-table thead th:nth-child(4) { color: var(--inhire-light); }
+  .compare-table thead th:nth-child(5) { color: var(--gh-light); }
+
+  .compare-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+  .compare-table tbody tr:hover { background: rgba(255,255,255,.02); }
+  .compare-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+  .compare-table td strong { color: var(--text); font-weight: 600; }
+
+  /* TAKEAWAY */
+  .takeaway {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .takeaway h2 {
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -.5px;
+  }
+
+  .takeaway-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .takeaway-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .takeaway-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--surface-3);
+    margin-bottom: 8px;
+  }
+
+  .takeaway-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .takeaway-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .footer .credit {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .5px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .cards { grid-template-columns: 1fr; }
+    .takeaway-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 32px; }
+    .hero-stats { gap: 20px; }
+    .card-highlights { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    .platform-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Inteligência de Processo Seletivo</div>
+    <h1>Guias Estratégicos ATS</h1>
+    <p>Como funcionam as 4 principais plataformas de recrutamento, o que a IA de cada uma avalia, o que o recrutador filtra, e como maximizar suas chances de chegar à entrevista.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">4</div>
+        <div class="hero-stat-label">Plataformas mapeadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">45+</div>
+        <div class="hero-stat-label">Seções de análise</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">30+</div>
+        <div class="hero-stat-label">Hacks documentados</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">13.000+</div>
+        <div class="hero-stat-label">Empresas cobertas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATFORM CARDS -->
+  <div class="cards">
+
+    <!-- GUPY -->
+    <a class="platform-card gupy" href="gupy-guia-estrategico.html">
+      <div class="card-accent"></div>
+      <div class="card-header">
+        <div class="card-icon">🟣</div>
+        <div class="card-title-group">
+          <h2>Gupy</h2>
+          <div class="card-subtitle">ATS dominante no Brasil</div>
+        </div>
+      </div>
+      <div class="card-desc">O sistema de gestão de processos seletivos usado por 4.000+ empresas brasileiras. A IA Gaia lê seu currículo, pontua de 0 a 100 e gera um ranking antes de qualquer recrutador abrir seu perfil.</div>
+      <div class="card-meta">
+        <span class="meta-tag">4.000+ empresas</span>
+        <span class="meta-tag">36M+ candidatos</span>
+        <span class="meta-tag">Score 0–100</span>
+      </div>
+      <div class="card-highlights">
+        <div class="highlight"><strong>IA</strong>Gaia (NLP/Watson) — matching por keywords</div>
+        <div class="highlight"><strong>Formato ideal</strong>.docx coluna única, sem design</div>
+        <div class="highlight"><strong>Empresas</strong>Itaú, Ambev, Vivo, Magazine Luiza</div>
+        <div class="highlight"><strong>Seções no guia</strong>10 seções, 9 hacks, 7 mitos</div>
+      </div>
+      <div class="card-cta">Abrir guia completo</div>
+    </a>
+
+    <!-- LINKEDIN -->
+    <a class="platform-card linkedin" href="linkedin-guia-estrategico.html">
+      <div class="card-accent"></div>
+      <div class="card-header">
+        <div class="card-icon">🔵</div>
+        <div class="card-title-group">
+          <h2>LinkedIn</h2>
+          <div class="card-subtitle">Rede + busca + vagas</div>
+        </div>
+      </div>
+      <div class="card-desc">A única plataforma onde o recrutador pode te encontrar sem que você se candidate. Funciona como mecanismo de busca, rede social e ATS simultaneamente. O algoritmo de 2026 usa LLMs para interpretar contexto.</div>
+      <div class="card-meta">
+        <span class="meta-tag">1B+ membros</span>
+        <span class="meta-tag">75M+ no Brasil</span>
+        <span class="meta-tag">SSI 0–100</span>
+      </div>
+      <div class="card-highlights">
+        <div class="highlight"><strong>IA</strong>LLMs contextuais + Social Selling Index</div>
+        <div class="highlight"><strong>Formato ideal</strong>Perfil completo = CV dinâmico</div>
+        <div class="highlight"><strong>Diferencial</strong>Recrutador te encontra proativamente</div>
+        <div class="highlight"><strong>Seções no guia</strong>14 seções, 8 hacks, 7 mitos</div>
+      </div>
+      <div class="card-cta">Abrir guia completo</div>
+    </a>
+
+    <!-- INHIRE -->
+    <a class="platform-card inhire" href="inhire-guia-estrategico.html">
+      <div class="card-accent"></div>
+      <div class="card-header">
+        <div class="card-icon">🟡</div>
+        <div class="card-title-group">
+          <h2>InHire</h2>
+          <div class="card-subtitle">ATS de startups & tech BR</div>
+        </div>
+      </div>
+      <div class="card-desc">Nasceu da Intera (consultoria de recrutamento tech). Classifica em Alto, Médio e Baixo fit com critérios definidos pelo recrutador. Tem extensão Chrome para hunting via LinkedIn e candidatura via WhatsApp.</div>
+      <div class="card-meta">
+        <span class="meta-tag">900+ empresas</span>
+        <span class="meta-tag">3 níveis de fit</span>
+        <span class="meta-tag">15+ job boards</span>
+      </div>
+      <div class="card-highlights">
+        <div class="highlight"><strong>IA</strong>Agente de Triagem: Alto/Médio/Baixo fit</div>
+        <div class="highlight"><strong>Formato ideal</strong>Texto rico, contexto narrativo</div>
+        <div class="highlight"><strong>Diferencial</strong>Hunting ativo via LinkedIn + WhatsApp</div>
+        <div class="highlight"><strong>Seções no guia</strong>9 seções, 7 hacks, comparativo</div>
+      </div>
+      <div class="card-cta">Abrir guia completo</div>
+    </a>
+
+    <!-- GREENHOUSE -->
+    <a class="platform-card greenhouse" href="greenhouse-guia-estrategico.html">
+      <div class="card-accent"></div>
+      <div class="card-header">
+        <div class="card-icon">🟢</div>
+        <div class="card-title-group">
+          <h2>Greenhouse</h2>
+          <div class="card-subtitle">ATS de tech global & startups VC</div>
+        </div>
+      </div>
+      <div class="card-desc">O único ATS onde o recrutador lê seu PDF real. Desde set/2025, a Greenhouse AI gera um resumo de 2-4 frases que decide se o recrutador abre seu arquivo. Design visual E parse importam simultaneamente.</div>
+      <div class="card-meta">
+        <span class="meta-tag">8.500+ empresas</span>
+        <span class="meta-tag">150M+ candidaturas/ano</span>
+        <span class="meta-tag">200+ países</span>
+      </div>
+      <div class="card-highlights">
+        <div class="highlight"><strong>IA</strong>Resumo + match scoring + shortlist</div>
+        <div class="highlight"><strong>Formato ideal</strong>PDF text-based, design limpo, 1 coluna</div>
+        <div class="highlight"><strong>Empresas</strong>Airbnb, Stripe, Figma, Notion, DoorDash</div>
+        <div class="highlight"><strong>Seções no guia</strong>12 seções, 7 hacks, 5 mitos</div>
+      </div>
+      <div class="card-cta">Abrir guia completo</div>
+    </a>
+
+  </div>
+
+  <!-- COMPARATIVO RÁPIDO -->
+  <div class="compare-section">
+    <h2>Comparativo rápido</h2>
+    <p>O que cada plataforma exige de você como candidata, lado a lado.</p>
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th>Gupy</th>
+            <th>LinkedIn</th>
+            <th>InHire</th>
+            <th>Greenhouse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mercado</td>
+            <td>Corporações BR</td>
+            <td>Global</td>
+            <td>Startups/tech BR</td>
+            <td>Tech global, VC</td>
+          </tr>
+          <tr>
+            <td>O que a IA faz</td>
+            <td>Score 0-100</td>
+            <td>Contexto + trajetória</td>
+            <td>Alto/Médio/Baixo fit</td>
+            <td>Resumo + match + shortlist</td>
+          </tr>
+          <tr>
+            <td>Recrutador vê</td>
+            <td>Ranking + formulário</td>
+            <td>Perfil público + headline</td>
+            <td>Classificação fit + CV</td>
+            <td><strong>Seu PDF real</strong> + sidebar</td>
+          </tr>
+          <tr>
+            <td>Formato ideal</td>
+            <td>.docx, sem design</td>
+            <td>Perfil completo</td>
+            <td>Texto narrativo rico</td>
+            <td>PDF limpo, design ok</td>
+          </tr>
+          <tr>
+            <td>Personalização</td>
+            <td>Campo "Apresente-se"</td>
+            <td>Perfil inteiro editável</td>
+            <td>Por empresa/vaga</td>
+            <td>CV por vaga</td>
+          </tr>
+          <tr>
+            <td>Portal centralizado</td>
+            <td>✅ portal.gupy.io</td>
+            <td>✅ Aba Vagas</td>
+            <td>❌ Por empresa</td>
+            <td>❌ Por empresa</td>
+          </tr>
+          <tr>
+            <td>Hunting passivo</td>
+            <td>Banco de Talentos</td>
+            <td>✅ Recruiter + Open to Work</td>
+            <td>✅ Extensão Chrome</td>
+            <td>✅ Via LinkedIn + HireEZ</td>
+          </tr>
+          <tr>
+            <td>Salário como filtro</td>
+            <td>Não (IA)</td>
+            <td>Não</td>
+            <td><strong>Sim — automático</strong></td>
+            <td>Não (IA)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAKEAWAY -->
+  <div class="takeaway">
+    <h2>3 princípios que atravessam todas as plataformas</h2>
+    <div class="takeaway-grid">
+      <div class="takeaway-card">
+        <div class="takeaway-num">01</div>
+        <h3>A IA é o primeiro filtro</h3>
+        <p>Em todas as plataformas, uma IA lê seu currículo antes de qualquer humano. Se a IA não encontra correspondência com a vaga, o recrutador nunca chega até você. Otimize para a máquina primeiro.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="takeaway-num">02</div>
+        <h3>LinkedIn alimenta tudo</h3>
+        <p>O InHire puxa perfis via extensão Chrome. O Greenhouse cruza dados com LinkedIn Recruiter. A Gupy integra publicação de vagas. Seu LinkedIn é o ativo transversal — otimize ele primeiro.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="takeaway-num">03</div>
+        <h3>Indicação > ATS frio</h3>
+        <p>Em todas as plataformas, candidatos indicados recebem atenção desproporcional. Os guias servem para garantir que o ATS não te sabote — mas a alavanca principal continua sendo quem te conhece.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Inteligência ATS — Guias Estratégicos de Processo Seletivo</strong></p>
+    <p>Gupy · LinkedIn · InHire · Greenhouse</p>
+    <p>Compilado em Agosto 2026</p>
+    <p class="credit">Fontes: documentação oficial de cada plataforma, help centers, análises de mercado, testes de parser, e especialistas em R&S</p>
+  </div>
+
+</div>
+
+</body>
+</html>
